@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
+		9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367215E0A2350003DAB1 /* InfoPlist.strings */; };
+		9F49367615E0A2350003DAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49367515E0A2350003DAB1 /* main.m */; };
+		9F49367A15E0A2350003DAB1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367815E0A2350003DAB1 /* Credits.rtf */; };
+		9F49367D15E0A2350003DAB1 /* FlibtyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */; };
+		9F49368015E0A2350003DAB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367E15E0A2350003DAB1 /* MainMenu.xib */; };
+		9F49368815E0A2360003DAB1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49368715E0A2360003DAB1 /* SenTestingKit.framework */; };
+		9F49368915E0A2360003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
+		9F49369115E0A2360003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49368F15E0A2360003DAB1 /* InfoPlist.strings */; };
+		9F49369415E0A2360003DAB1 /* flibtyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369315E0A2360003DAB1 /* flibtyTests.m */; };
+		9F4936A215E175110003DAB1 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */; };
+		9F4936A315E175110003DAB1 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */; };
+		9F4936A715E1891D0003DAB1 /* FlibtyServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A615E1891D0003DAB1 /* FlibtyServer.m */; };
+		9F4936AE15E196440003DAB1 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */; };
+		9F4936B015E196440003DAB1 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */; };
+		9F4936BF15E2935A0003DAB1 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B715E2935A0003DAB1 /* StringUtil.m */; };
+		9F4936C015E2935A0003DAB1 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B715E2935A0003DAB1 /* StringUtil.m */; };
+		9F4936C115E2935A0003DAB1 /* XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B915E2935A0003DAB1 /* XML.m */; };
+		9F4936C215E2935A0003DAB1 /* XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B915E2935A0003DAB1 /* XML.m */; };
+		9F4936C315E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
+		9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
+		9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
+		9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
+		9F4936C815E298E90003DAB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4936C715E298E80003DAB1 /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9F49368A15E0A2360003DAB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F49365C15E0A2350003DAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F49366415E0A2350003DAB1;
+			remoteInfo = flibty;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9F49366515E0A2350003DAB1 /* flibty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flibty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F49366915E0A2350003DAB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9F49366C15E0A2350003DAB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9F49366D15E0A2350003DAB1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9F49366E15E0A2350003DAB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9F49367115E0A2350003DAB1 /* flibty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "flibty-Info.plist"; sourceTree = "<group>"; };
+		9F49367315E0A2350003DAB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9F49367515E0A2350003DAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9F49367715E0A2350003DAB1 /* flibty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flibty-Prefix.pch"; sourceTree = "<group>"; };
+		9F49367915E0A2350003DAB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		9F49367B15E0A2350003DAB1 /* FlibtyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlibtyAppDelegate.h; sourceTree = "<group>"; };
+		9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlibtyAppDelegate.m; sourceTree = "<group>"; };
+		9F49367F15E0A2350003DAB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9F49368615E0A2360003DAB1 /* flibtyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flibtyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F49368715E0A2360003DAB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9F49368E15E0A2360003DAB1 /* flibtyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "flibtyTests-Info.plist"; sourceTree = "<group>"; };
+		9F49369015E0A2360003DAB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9F49369215E0A2360003DAB1 /* flibtyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = flibtyTests.h; sourceTree = "<group>"; };
+		9F49369315E0A2360003DAB1 /* flibtyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = flibtyTests.m; sourceTree = "<group>"; };
+		9F49369E15E175110003DAB1 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		9F4936A015E175110003DAB1 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		9F4936A515E1891D0003DAB1 /* FlibtyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyServer.h; sourceTree = "<group>"; };
+		9F4936A615E1891D0003DAB1 /* FlibtyServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlibtyServer.m; sourceTree = "<group>"; };
+		9F4936A815E195B20003DAB1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9F4936AA15E195C60003DAB1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9F4936B615E2935A0003DAB1 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
+		9F4936B715E2935A0003DAB1 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
+		9F4936B815E2935A0003DAB1 /* XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML.h; sourceTree = "<group>"; };
+		9F4936B915E2935A0003DAB1 /* XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML.m; sourceTree = "<group>"; };
+		9F4936BA15E2935A0003DAB1 /* XMLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoader.h; sourceTree = "<group>"; };
+		9F4936BB15E2935A0003DAB1 /* XMLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLLoader.m; sourceTree = "<group>"; };
+		9F4936BC15E2935A0003DAB1 /* XMLLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoaderDelegate.h; sourceTree = "<group>"; };
+		9F4936BD15E2935A0003DAB1 /* XMLLoadWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoadWatcher.h; sourceTree = "<group>"; };
+		9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLLoadWatcher.m; sourceTree = "<group>"; };
+		9F4936C715E298E80003DAB1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F49366215E0A2350003DAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4936C815E298E90003DAB1 /* Security.framework in Frameworks */,
+				9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F49368215E0A2360003DAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F49368815E0A2360003DAB1 /* SenTestingKit.framework in Frameworks */,
+				9F49368915E0A2360003DAB1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F49365A15E0A2350003DAB1 = {
+			isa = PBXGroup;
+			children = (
+				9F4936C715E298E80003DAB1 /* Security.framework */,
+				9F49366F15E0A2350003DAB1 /* flibty */,
+				9F49368C15E0A2360003DAB1 /* flibtyTests */,
+				9F49366815E0A2350003DAB1 /* Frameworks */,
+				9F49366615E0A2350003DAB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9F49366615E0A2350003DAB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F49366515E0A2350003DAB1 /* flibty.app */,
+				9F49368615E0A2360003DAB1 /* flibtyTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F49366815E0A2350003DAB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F4936AA15E195C60003DAB1 /* Security.framework */,
+				9F4936A815E195B20003DAB1 /* CFNetwork.framework */,
+				9F49366915E0A2350003DAB1 /* Cocoa.framework */,
+				9F49368715E0A2360003DAB1 /* SenTestingKit.framework */,
+				9F49366B15E0A2350003DAB1 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F49366B15E0A2350003DAB1 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F49366C15E0A2350003DAB1 /* AppKit.framework */,
+				9F49366D15E0A2350003DAB1 /* CoreData.framework */,
+				9F49366E15E0A2350003DAB1 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9F49366F15E0A2350003DAB1 /* flibty */ = {
+			isa = PBXGroup;
+			children = (
+				9F4936B515E293420003DAB1 /* xml */,
+				9F4936A415E188E40003DAB1 /* log */,
+				9F49369D15E174610003DAB1 /* net */,
+				9F49367B15E0A2350003DAB1 /* FlibtyAppDelegate.h */,
+				9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */,
+				9F49367E15E0A2350003DAB1 /* MainMenu.xib */,
+				9F49367015E0A2350003DAB1 /* Supporting Files */,
+			);
+			path = flibty;
+			sourceTree = "<group>";
+		};
+		9F49367015E0A2350003DAB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F49367115E0A2350003DAB1 /* flibty-Info.plist */,
+				9F49367215E0A2350003DAB1 /* InfoPlist.strings */,
+				9F49367515E0A2350003DAB1 /* main.m */,
+				9F49367715E0A2350003DAB1 /* flibty-Prefix.pch */,
+				9F49367815E0A2350003DAB1 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9F49368C15E0A2360003DAB1 /* flibtyTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F49369215E0A2360003DAB1 /* flibtyTests.h */,
+				9F49369315E0A2360003DAB1 /* flibtyTests.m */,
+				9F49368D15E0A2360003DAB1 /* Supporting Files */,
+			);
+			path = flibtyTests;
+			sourceTree = "<group>";
+		};
+		9F49368D15E0A2360003DAB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F49368E15E0A2360003DAB1 /* flibtyTests-Info.plist */,
+				9F49368F15E0A2360003DAB1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9F49369D15E174610003DAB1 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				9F49369E15E175110003DAB1 /* GCDAsyncSocket.h */,
+				9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */,
+				9F4936A015E175110003DAB1 /* GCDAsyncUdpSocket.h */,
+				9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */,
+			);
+			name = net;
+			sourceTree = "<group>";
+		};
+		9F4936A415E188E40003DAB1 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				9F4936A515E1891D0003DAB1 /* FlibtyServer.h */,
+				9F4936A615E1891D0003DAB1 /* FlibtyServer.m */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
+		9F4936B515E293420003DAB1 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				9F4936B615E2935A0003DAB1 /* StringUtil.h */,
+				9F4936B715E2935A0003DAB1 /* StringUtil.m */,
+				9F4936B815E2935A0003DAB1 /* XML.h */,
+				9F4936B915E2935A0003DAB1 /* XML.m */,
+				9F4936BA15E2935A0003DAB1 /* XMLLoader.h */,
+				9F4936BB15E2935A0003DAB1 /* XMLLoader.m */,
+				9F4936BC15E2935A0003DAB1 /* XMLLoaderDelegate.h */,
+				9F4936BD15E2935A0003DAB1 /* XMLLoadWatcher.h */,
+				9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */,
+			);
+			name = xml;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F49366415E0A2350003DAB1 /* flibty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F49369715E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibty" */;
+			buildPhases = (
+				9F49366115E0A2350003DAB1 /* Sources */,
+				9F49366215E0A2350003DAB1 /* Frameworks */,
+				9F49366315E0A2350003DAB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = flibty;
+			productName = flibty;
+			productReference = 9F49366515E0A2350003DAB1 /* flibty.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9F49368515E0A2360003DAB1 /* flibtyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F49369A15E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibtyTests" */;
+			buildPhases = (
+				9F49368115E0A2360003DAB1 /* Sources */,
+				9F49368215E0A2360003DAB1 /* Frameworks */,
+				9F49368315E0A2360003DAB1 /* Resources */,
+				9F49368415E0A2360003DAB1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F49368B15E0A2360003DAB1 /* PBXTargetDependency */,
+			);
+			name = flibtyTests;
+			productName = flibtyTests;
+			productReference = 9F49368615E0A2360003DAB1 /* flibtyTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F49365C15E0A2350003DAB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Flibty;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Matt Bolt";
+			};
+			buildConfigurationList = 9F49365F15E0A2350003DAB1 /* Build configuration list for PBXProject "flibty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9F49365A15E0A2350003DAB1;
+			productRefGroup = 9F49366615E0A2350003DAB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9F49366415E0A2350003DAB1 /* flibty */,
+				9F49368515E0A2360003DAB1 /* flibtyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9F49366315E0A2350003DAB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */,
+				9F49367A15E0A2350003DAB1 /* Credits.rtf in Resources */,
+				9F49368015E0A2350003DAB1 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F49368315E0A2360003DAB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F49369115E0A2360003DAB1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9F49368415E0A2360003DAB1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9F49366115E0A2350003DAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4936AE15E196440003DAB1 /* GCDAsyncSocket.m in Sources */,
+				9F4936B015E196440003DAB1 /* GCDAsyncUdpSocket.m in Sources */,
+				9F49367615E0A2350003DAB1 /* main.m in Sources */,
+				9F49367D15E0A2350003DAB1 /* FlibtyAppDelegate.m in Sources */,
+				9F4936A715E1891D0003DAB1 /* FlibtyServer.m in Sources */,
+				9F4936BF15E2935A0003DAB1 /* StringUtil.m in Sources */,
+				9F4936C115E2935A0003DAB1 /* XML.m in Sources */,
+				9F4936C315E2935A0003DAB1 /* XMLLoader.m in Sources */,
+				9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F49368115E0A2360003DAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F49369415E0A2360003DAB1 /* flibtyTests.m in Sources */,
+				9F4936A215E175110003DAB1 /* GCDAsyncSocket.m in Sources */,
+				9F4936A315E175110003DAB1 /* GCDAsyncUdpSocket.m in Sources */,
+				9F4936C015E2935A0003DAB1 /* StringUtil.m in Sources */,
+				9F4936C215E2935A0003DAB1 /* XML.m in Sources */,
+				9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */,
+				9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F49368B15E0A2360003DAB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F49366415E0A2350003DAB1 /* flibty */;
+			targetProxy = 9F49368A15E0A2360003DAB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9F49367215E0A2350003DAB1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F49367315E0A2350003DAB1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9F49367815E0A2350003DAB1 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F49367915E0A2350003DAB1 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		9F49367E15E0A2350003DAB1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F49367F15E0A2350003DAB1 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		9F49368F15E0A2360003DAB1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F49369015E0A2360003DAB1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9F49369515E0A2360003DAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9F49369615E0A2360003DAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9F49369815E0A2360003DAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
+				INFOPLIST_FILE = "flibty/flibty-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9F49369915E0A2360003DAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
+				INFOPLIST_FILE = "flibty/flibty-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9F49369B15E0A2360003DAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/flibty.app/Contents/MacOS/flibty";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
+				INFOPLIST_FILE = "flibtyTests/flibtyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9F49369C15E0A2360003DAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/flibty.app/Contents/MacOS/flibty";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
+				INFOPLIST_FILE = "flibtyTests/flibtyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9F49365F15E0A2350003DAB1 /* Build configuration list for PBXProject "flibty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F49369515E0A2360003DAB1 /* Debug */,
+				9F49369615E0A2360003DAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F49369715E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F49369815E0A2360003DAB1 /* Debug */,
+				9F49369915E0A2360003DAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9F49369A15E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibtyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F49369B15E0A2360003DAB1 /* Debug */,
+				9F49369C15E0A2360003DAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9F49365C15E0A2350003DAB1 /* Project object */;
+}
