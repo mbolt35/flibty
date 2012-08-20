@@ -69,12 +69,12 @@
     return value >= min && value <= max;
 }
 
--(void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
+-(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
     @synchronized(connectedSockets) {
         [connectedSockets addObject:newSocket];
     }
     
-    NSString *host = [newSocket connectedHost];
+    NSString* host = [newSocket connectedHost];
     UInt16 port = [newSocket connectedPort];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -86,44 +86,43 @@
     [newSocket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
 }
 
--(void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+-(void)socket:(GCDAsyncSocket*)sock didWriteDataWithTag:(long)tag {
     if (tag == POLICY_TAG) {
         [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
     }
 }
 
--(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"didReadData: %ld", data.length);
-
+-(void)socket:(GCDAsyncSocket*)sock didReadData:(NSData*)data withTag:(long)tag {
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             NSData *strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
             NSString *msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
+            
             if (msg) {
-                NSRange range = [msg rangeOfString:@"!SOS"];
-                if (range.location != NSNotFound) {
-                    NSString* xmlString = [msg substringFromIndex:range.location + range.length];
-                    //NSLog(@"%@", xmlString);
+                if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
+                    NSLog(@"Policy file requested, serving.");
+                    [sock writeData:[POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:POLICY_TAG];
+                } else {
+                    NSRange range = [msg rangeOfString:@"!SOS"];
+                
+                    if (range.location != NSNotFound) {
+                        NSString* xmlString = [msg substringFromIndex:range.location + range.length];
                     
-                    [XML loadXmlString:xmlString onLoadComplete:^(XML* xml) {
-                        NSLog(@"key: %@, value: %@", [xml attributeByName:@"key"], xml.nodeValue);
-                    }];
+                        [XML loadXmlString:xmlString onLoadComplete:^(XML* xml) {
+                            @autoreleasepool {
+                                NSLog(@"key: %@, value: %@", [xml attributeByName:@"key"], xml.nodeValue);
+                            }
+                        }];
+                    }
                 }
             } else {
                 NSLog(@"Error converting received data into UTF-8 String");
-            }
-            
-            if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
-                NSLog(@"Policy file!");
-                [sock writeData:[POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:POLICY_TAG];
-            } else {
-                [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
             }
         }
     });
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+- (void)socketDidDisconnect:(GCDAsyncSocket*)sock withError:(NSError*)err {
     if (sock != socket) {
         dispatch_async(dispatch_get_main_queue(), ^{
             @autoreleasepool {
