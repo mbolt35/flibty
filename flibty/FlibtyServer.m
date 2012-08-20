@@ -18,6 +18,7 @@
         socketQueue = dispatch_queue_create("socketQueue", NULL);
         socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
         connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
+        policyData = [POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding];
         
         isRunning = NO;
     }
@@ -101,7 +102,7 @@
             if (msg) {
                 if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
                     NSLog(@"Policy file requested, serving.");
-                    [sock writeData:[POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:POLICY_TAG];
+                    [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
                 } else {
                     NSRange range = [msg rangeOfString:@"!SOS"];
                 
@@ -114,6 +115,9 @@
                             }
                         }];
                     }
+                    
+                    // Queue next read
+                    [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
                 }
             } else {
                 NSLog(@"Error converting received data into UTF-8 String");

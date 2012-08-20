@@ -15,10 +15,11 @@
 
 @interface FlibtyServer : NSObject {
     GCDAsyncSocket* socket;
-	NSMutableArray *connectedSockets;
-	dispatch_queue_t socketQueue;
+    NSData* policyData;
+    NSMutableArray* connectedSockets;
+    dispatch_queue_t socketQueue;
     
-	BOOL isRunning;
+    BOOL isRunning;
 }
 
 -(void)start:(NSString*)host port:(int)port;
