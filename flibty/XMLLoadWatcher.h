@@ -15,7 +15,7 @@
 typedef void(^CallbackBlock)(XML* xml);
 
 @interface XMLLoadWatcher : NSObject <XMLLoaderDelegate> {
-	CallbackBlock callback;
+    CallbackBlock callback;
 }
 
 + (id)watcher:(XMLLoader*)loader onLoadComplete:(void(^)(XML* xml))completeCallback;

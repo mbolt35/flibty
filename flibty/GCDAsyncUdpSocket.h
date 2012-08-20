@@ -20,12 +20,12 @@ extern NSString *const GCDAsyncUdpSocketThreadName;
 
 enum GCDAsyncUdpSocketError
 {
-	GCDAsyncUdpSocketNoError = 0,          // Never used
-	GCDAsyncUdpSocketBadConfigError,       // Invalid configuration
-	GCDAsyncUdpSocketBadParamError,        // Invalid parameter was passed
-	GCDAsyncUdpSocketSendTimeoutError,     // A send operation timed out
-	GCDAsyncUdpSocketClosedError,          // The socket was closed
-	GCDAsyncUdpSocketOtherError,           // Description provided in userInfo
+    GCDAsyncUdpSocketNoError = 0,          // Never used
+    GCDAsyncUdpSocketBadConfigError,       // Invalid configuration
+    GCDAsyncUdpSocketBadParamError,        // Invalid parameter was passed
+    GCDAsyncUdpSocketSendTimeoutError,     // A send operation timed out
+    GCDAsyncUdpSocketClosedError,          // The socket was closed
+    GCDAsyncUdpSocketOtherError,           // Description provided in userInfo
 };
 typedef enum GCDAsyncUdpSocketError GCDAsyncUdpSocketError;
 

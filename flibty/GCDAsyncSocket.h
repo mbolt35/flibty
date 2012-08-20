@@ -77,15 +77,15 @@ extern NSString *const GCDAsyncSocketSSLDiffieHellmanParameters;
 
 enum GCDAsyncSocketError
 {
-	GCDAsyncSocketNoError = 0,           // Never used
-	GCDAsyncSocketBadConfigError,        // Invalid configuration
-	GCDAsyncSocketBadParamError,         // Invalid parameter was passed
-	GCDAsyncSocketConnectTimeoutError,   // A connect operation timed out
-	GCDAsyncSocketReadTimeoutError,      // A read operation timed out
-	GCDAsyncSocketWriteTimeoutError,     // A write operation timed out
-	GCDAsyncSocketReadMaxedOutError,     // Reached set maxLength without completing
-	GCDAsyncSocketClosedError,           // The remote peer closed the connection
-	GCDAsyncSocketOtherError,            // Description provided in userInfo
+    GCDAsyncSocketNoError = 0,           // Never used
+    GCDAsyncSocketBadConfigError,        // Invalid configuration
+    GCDAsyncSocketBadParamError,         // Invalid parameter was passed
+    GCDAsyncSocketConnectTimeoutError,   // A connect operation timed out
+    GCDAsyncSocketReadTimeoutError,      // A read operation timed out
+    GCDAsyncSocketWriteTimeoutError,     // A write operation timed out
+    GCDAsyncSocketReadMaxedOutError,     // Reached set maxLength without completing
+    GCDAsyncSocketClosedError,           // The remote peer closed the connection
+    GCDAsyncSocketOtherError,            // Description provided in userInfo
 };
 typedef enum GCDAsyncSocketError GCDAsyncSocketError;
 
@@ -95,55 +95,55 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
 
 @interface GCDAsyncSocket : NSObject
 {
-	uint32_t flags;
-	uint16_t config;
-	
+    uint32_t flags;
+    uint16_t config;
+    
 #if __has_feature(objc_arc_weak)
-	__weak id delegate;
+    __weak id delegate;
 #else
-	__unsafe_unretained id delegate;
+    __unsafe_unretained id delegate;
 #endif
-	dispatch_queue_t delegateQueue;
-	
-	int socket4FD;
-	int socket6FD;
-	int connectIndex;
-	NSData * connectInterface4;
-	NSData * connectInterface6;
-	
-	dispatch_queue_t socketQueue;
-	
-	dispatch_source_t accept4Source;
-	dispatch_source_t accept6Source;
-	dispatch_source_t connectTimer;
-	dispatch_source_t readSource;
-	dispatch_source_t writeSource;
-	dispatch_source_t readTimer;
-	dispatch_source_t writeTimer;
-	
-	NSMutableArray *readQueue;
-	NSMutableArray *writeQueue;
-	
-	GCDAsyncReadPacket *currentRead;
-	GCDAsyncWritePacket *currentWrite;
-	
-	unsigned long socketFDBytesAvailable;
-	
-	GCDAsyncSocketPreBuffer *preBuffer;
-		
+    dispatch_queue_t delegateQueue;
+    
+    int socket4FD;
+    int socket6FD;
+    int connectIndex;
+    NSData * connectInterface4;
+    NSData * connectInterface6;
+    
+    dispatch_queue_t socketQueue;
+    
+    dispatch_source_t accept4Source;
+    dispatch_source_t accept6Source;
+    dispatch_source_t connectTimer;
+    dispatch_source_t readSource;
+    dispatch_source_t writeSource;
+    dispatch_source_t readTimer;
+    dispatch_source_t writeTimer;
+    
+    NSMutableArray *readQueue;
+    NSMutableArray *writeQueue;
+    
+    GCDAsyncReadPacket *currentRead;
+    GCDAsyncWritePacket *currentWrite;
+    
+    unsigned long socketFDBytesAvailable;
+    
+    GCDAsyncSocketPreBuffer *preBuffer;
+        
 #if TARGET_OS_IPHONE
-	CFStreamClientContext streamContext;
-	CFReadStreamRef readStream;
-	CFWriteStreamRef writeStream;
+    CFStreamClientContext streamContext;
+    CFReadStreamRef readStream;
+    CFWriteStreamRef writeStream;
 #endif
 #if SECURE_TRANSPORT_MAYBE_AVAILABLE
-	SSLContextRef sslContext;
-	GCDAsyncSocketPreBuffer *sslPreBuffer;
-	size_t sslWriteCachedLength;
-	OSStatus sslErrCode;
+    SSLContextRef sslContext;
+    GCDAsyncSocketPreBuffer *sslPreBuffer;
+    size_t sslWriteCachedLength;
+    OSStatus sslErrCode;
 #endif
-	
-	id userData;
+    
+    id userData;
 }
 
 /**
@@ -513,9 +513,9 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
  * the method [NSData dataWithBytesNoCopy:length:freeWhenDone:NO].
 **/
 - (void)readDataWithTimeout:(NSTimeInterval)timeout
-					 buffer:(NSMutableData *)buffer
-			   bufferOffset:(NSUInteger)offset
-						tag:(long)tag;
+                     buffer:(NSMutableData *)buffer
+               bufferOffset:(NSUInteger)offset
+                        tag:(long)tag;
 
 /**
  * Reads the first available bytes that become available on the socket.

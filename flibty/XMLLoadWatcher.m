@@ -13,28 +13,28 @@
 
 
 + (id)watcher:(XMLLoader*)loader onLoadComplete:(void(^)(XML* xml))completeCallback {
-	XMLLoadWatcher* w = [[XMLLoadWatcher alloc] init];
-	[w watch:loader onLoadComplete:completeCallback];
-	
-	return w;
+    XMLLoadWatcher* w = [[XMLLoadWatcher alloc] init];
+    [w watch:loader onLoadComplete:completeCallback];
+    
+    return w;
 }
 
 - (void)watch:(XMLLoader*)loader onLoadComplete:(void(^)(XML* xml))completeCallback {
-	loader.delegate = self;
-	
-	callback = completeCallback;
+    loader.delegate = self;
+    
+    callback = completeCallback;
 }
 
 - (void)xmlLoadStarted:(XMLLoader*)loader {
-	//NSLog(@"XML Load Started...");
+    //NSLog(@"XML Load Started...");
 }
 
 - (void)xmlLoadCompleted:(XMLLoader*)loader withResult:(XML*)xml {
-	callback(xml);
+    callback(xml);
 }
 
 - (void)xmlLoadError:(XMLLoader*)loader withError:(NSError*)error {
-	callback(nil);
+    callback(nil);
 }
 
 @end

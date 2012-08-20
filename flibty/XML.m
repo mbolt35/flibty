@@ -21,20 +21,20 @@
  * object via the callback selector.
  */
 + (void)loadWithUrlString:(NSString*)urlString onLoadComplete:(void(^)(XML* xml))completeCallback {
-	XMLLoader* loader = [[XMLLoader alloc] initWithURLString:urlString];
-	[XMLLoadWatcher watcher:loader onLoadComplete:completeCallback];
-	
-	[loader load];
+    XMLLoader* loader = [[XMLLoader alloc] initWithURLString:urlString];
+    [XMLLoadWatcher watcher:loader onLoadComplete:completeCallback];
+    
+    [loader load];
 }
 
 /**
  * This static method loads an xml file using a string containing xml text.
  */
 + (void)loadXmlString:(NSString*)xmlString onLoadComplete:(void(^)(XML* xml))completeCallback {
-	XMLLoader* loader = [[XMLLoader alloc] initWithXmlString:xmlString];
-	[XMLLoadWatcher watcher:loader onLoadComplete:completeCallback];
-	
-	[loader load];
+    XMLLoader* loader = [[XMLLoader alloc] initWithXmlString:xmlString];
+    [XMLLoadWatcher watcher:loader onLoadComplete:completeCallback];
+    
+    [loader load];
 }
 
 /**
@@ -92,7 +92,7 @@
  * This method will generate the NSString representation of the XML object.
  */
 - (NSString*)toString {
-	return [self toString:@""];
+    return [self toString:@""];
 }
 
 /**
@@ -126,7 +126,7 @@
         }
     } else {
         if (nodeValue == nil) {
-            return [StringUtil concat:str withString:[NSString stringWithFormat:@"/>\n", nodeValue, elementName]];
+            return [StringUtil concat:str withString:[NSString stringWithFormat:@"/>\n"]];
         }
         
         return [StringUtil concat:str withString:[NSString stringWithFormat:@">%@</%@>\n", nodeValue, elementName]];

@@ -13,15 +13,15 @@
 @class XML;
 
 @interface XMLLoader : NSObject <NSXMLParserDelegate> {
-	NSXMLParser* xmlParser;
-	NSMutableArray* elementStack;
-	
-	__weak id<XMLLoaderDelegate> delegate;
-	
-	XML* currentElement;
-	
-	BOOL isLoading;
-	BOOL isLoaded;
+    NSXMLParser* xmlParser;
+    NSMutableArray* elementStack;
+    
+    __weak id<XMLLoaderDelegate> delegate;
+    
+    XML* currentElement;
+    
+    BOOL isLoading;
+    BOOL isLoaded;
 }
 
 //----------------------------------
@@ -39,7 +39,7 @@
 
 @property(nonatomic, weak) id<XMLLoaderDelegate> delegate;
 @property(readonly, nonatomic) BOOL isLoading;
-@property(readonly, nonatomic) BOOL	isLoaded;
+@property(readonly, nonatomic) BOOL    isLoaded;
 @property(readonly, nonatomic,getter=xml) XML* currentElement;
 
 @end

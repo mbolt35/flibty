@@ -15,12 +15,12 @@
 
 - (id)init {
     if((self = [super init])) {
-		socketQueue = dispatch_queue_create("socketQueue", NULL);
-		socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
-		connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
-		
-		isRunning = NO;
-	}
+        socketQueue = dispatch_queue_create("socketQueue", NULL);
+        socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
+        connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        isRunning = NO;
+    }
     
     return self;
 }
@@ -70,18 +70,18 @@
 }
 
 -(void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
-	@synchronized(connectedSockets) {
-		[connectedSockets addObject:newSocket];
-	}
-	
-	NSString *host = [newSocket connectedHost];
-	UInt16 port = [newSocket connectedPort];
-	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		@autoreleasepool {
+    @synchronized(connectedSockets) {
+        [connectedSockets addObject:newSocket];
+    }
+    
+    NSString *host = [newSocket connectedHost];
+    UInt16 port = [newSocket connectedPort];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
             NSLog(@"Accepted client %@:%hu", host, port);
-		}
-	});
+        }
+    });
     
     [newSocket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
 }
@@ -93,13 +93,13 @@
 }
 
 -(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-	NSLog(@"didReadData: %ld", data.length);
+    NSLog(@"didReadData: %ld", data.length);
 
-	dispatch_async(dispatch_get_main_queue(), ^{
-		@autoreleasepool {
-			NSData *strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
-			NSString *msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
-			if (msg) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            NSData *strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
+            NSString *msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
+            if (msg) {
                 NSRange range = [msg rangeOfString:@"!SOS"];
                 if (range.location != NSNotFound) {
                     NSString* xmlString = [msg substringFromIndex:range.location + range.length];
@@ -109,9 +109,9 @@
                         NSLog(@"key: %@, value: %@", [xml attributeByName:@"key"], xml.nodeValue);
                     }];
                 }
-			} else {
-				NSLog(@"Error converting received data into UTF-8 String");
-			}
+            } else {
+                NSLog(@"Error converting received data into UTF-8 String");
+            }
             
             if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
                 NSLog(@"Policy file!");
@@ -119,22 +119,22 @@
             } else {
                 [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
             }
-		}
-	});
+        }
+    });
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
-	if (sock != socket) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			@autoreleasepool {
+    if (sock != socket) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @autoreleasepool {
                 NSLog(@"client disconnected, error: %@", err);
-			}
-		});
-		
-		@synchronized(connectedSockets) {
-			[connectedSockets removeObject:sock];
-		}
-	}
+            }
+        });
+        
+        @synchronized(connectedSockets) {
+            [connectedSockets removeObject:sock];
+        }
+    }
 }
 
 @end
