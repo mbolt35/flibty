@@ -10,8 +10,8 @@
 #import "GCDAsyncSocket.h"
 #import "XML.h"
 
-#define POLICY_TAG 10
-#define POLICY_FILE @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\">\n<cross-domain-policy>\n    <allow-access-from domain=\"*\" to-ports=\"*\" />\n</cross-domain-policy>\x00"
+extern const NSUInteger POLICY_TAG;
+extern const NSString* const POLICY_FILE;
 
 @interface FlibtyServer : NSObject {
     GCDAsyncSocket* socket;
