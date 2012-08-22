@@ -12,14 +12,13 @@
 #import <dispatch/dispatch.h>
 
 
-extern NSString *const GCDAsyncUdpSocketException;
-extern NSString *const GCDAsyncUdpSocketErrorDomain;
+extern NSString* const GCDAsyncUdpSocketException;
+extern NSString* const GCDAsyncUdpSocketErrorDomain;
 
-extern NSString *const GCDAsyncUdpSocketQueueName;
-extern NSString *const GCDAsyncUdpSocketThreadName;
+extern NSString* const GCDAsyncUdpSocketQueueName;
+extern NSString* const GCDAsyncUdpSocketThreadName;
 
-enum GCDAsyncUdpSocketError
-{
+enum GCDAsyncUdpSocketError {
     GCDAsyncUdpSocketNoError = 0,          // Never used
     GCDAsyncUdpSocketBadConfigError,       // Invalid configuration
     GCDAsyncUdpSocketBadParamError,        // Invalid parameter was passed
@@ -77,7 +76,7 @@ typedef enum GCDAsyncUdpSocketError GCDAsyncUdpSocketError;
  * [udpSocket setReceiveFilter:filter withQueue:myParsingQueue];
  * 
 **/
-typedef BOOL (^GCDAsyncUdpSocketReceiveFilterBlock)(NSData *data, NSData *address, id *context);
+typedef BOOL (^GCDAsyncUdpSocketReceiveFilterBlock)(NSData* data, NSData* address, id* context);
 
 /**
  * You may optionally set a send filter for the socket.
@@ -105,7 +104,7 @@ typedef BOOL (^GCDAsyncUdpSocketReceiveFilterBlock)(NSData *data, NSData *addres
  * Regardless of the return value, the delegate will be informed that the packet was successfully sent.
  *
 **/
-typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, long tag);
+typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData* data, NSData* address, long tag);
 
 
 @interface GCDAsyncUdpSocket : NSObject
@@ -124,24 +123,33 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * 
  * The delegate queue and socket queue can optionally be the same.
 **/
-- (id)init;
-- (id)initWithSocketQueue:(dispatch_queue_t)sq;
-- (id)initWithDelegate:(id)aDelegate delegateQueue:(dispatch_queue_t)dq;
-- (id)initWithDelegate:(id)aDelegate delegateQueue:(dispatch_queue_t)dq socketQueue:(dispatch_queue_t)sq;
+-(id)init;
+
+-(id)initWithSocketQueue:(dispatch_queue_t)sq;
+
+-(id)initWithDelegate:(id)aDelegate delegateQueue:(dispatch_queue_t)dq;
+
+-(id)initWithDelegate:(id)aDelegate delegateQueue:(dispatch_queue_t)dq socketQueue:(dispatch_queue_t)sq;
 
 #pragma mark Configuration
 
-- (id)delegate;
-- (void)setDelegate:(id)delegate;
-- (void)synchronouslySetDelegate:(id)delegate;
+-(id)delegate;
 
-- (dispatch_queue_t)delegateQueue;
-- (void)setDelegateQueue:(dispatch_queue_t)delegateQueue;
-- (void)synchronouslySetDelegateQueue:(dispatch_queue_t)delegateQueue;
+-(void)setDelegate:(id)delegate;
 
-- (void)getDelegate:(id *)delegatePtr delegateQueue:(dispatch_queue_t *)delegateQueuePtr;
-- (void)setDelegate:(id)delegate delegateQueue:(dispatch_queue_t)delegateQueue;
-- (void)synchronouslySetDelegate:(id)delegate delegateQueue:(dispatch_queue_t)delegateQueue;
+-(void)synchronouslySetDelegate:(id)delegate;
+
+-(dispatch_queue_t)delegateQueue;
+
+-(void)setDelegateQueue:(dispatch_queue_t)delegateQueue;
+
+-(void)synchronouslySetDelegateQueue:(dispatch_queue_t)delegateQueue;
+
+-(void)getDelegate:(id*)delegatePtr delegateQueue:(dispatch_queue_t*)delegateQueuePtr;
+
+-(void)setDelegate:(id)delegate delegateQueue:(dispatch_queue_t)delegateQueue;
+
+-(void)synchronouslySetDelegate:(id)delegate delegateQueue:(dispatch_queue_t)delegateQueue;
 
 /**
  * By default, both IPv4 and IPv6 are enabled.
@@ -161,19 +169,25 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Starting with Mac OS X 10.7 Lion and iOS 5, the default IP preference is neutral.
  * On prior systems the default IP preference is IPv4.
  **/
-- (BOOL)isIPv4Enabled;
-- (void)setIPv4Enabled:(BOOL)flag;
+-(BOOL)isIPv4Enabled;
 
-- (BOOL)isIPv6Enabled;
-- (void)setIPv6Enabled:(BOOL)flag;
+-(void)setIPv4Enabled:(BOOL)flag;
 
-- (BOOL)isIPv4Preferred;
-- (BOOL)isIPv6Preferred;
-- (BOOL)isIPVersionNeutral;
+-(BOOL)isIPv6Enabled;
 
-- (void)setPreferIPv4;
-- (void)setPreferIPv6;
-- (void)setIPVersionNeutral;
+-(void)setIPv6Enabled:(BOOL)flag;
+
+-(BOOL)isIPv4Preferred;
+
+-(BOOL)isIPv6Preferred;
+
+-(BOOL)isIPVersionNeutral;
+
+-(void)setPreferIPv4;
+
+-(void)setPreferIPv6;
+
+-(void)setIPVersionNeutral;
 
 /**
  * Gets/Sets the maximum size of the buffer that will be allocated for receive operations.
@@ -191,18 +205,21 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * If you set the buffer size too small, the sockets API in the OS will silently discard
  * any extra data, and you will not be notified of the error.
 **/
-- (uint16_t)maxReceiveIPv4BufferSize;
-- (void)setMaxReceiveIPv4BufferSize:(uint16_t)max;
+-(uint16_t)maxReceiveIPv4BufferSize;
 
-- (uint32_t)maxReceiveIPv6BufferSize;
-- (void)setMaxReceiveIPv6BufferSize:(uint32_t)max;
+-(void)setMaxReceiveIPv4BufferSize:(uint16_t)max;
+
+-(uint32_t)maxReceiveIPv6BufferSize;
+
+-(void)setMaxReceiveIPv6BufferSize:(uint32_t)max;
 
 /**
  * User data allows you to associate arbitrary information with the socket.
  * This data is not used internally in any way.
 **/
-- (id)userData;
-- (void)setUserData:(id)arbitraryUserData;
+-(id)userData;
+
+-(void)setUserData:(id)arbitraryUserData;
 
 #pragma mark Diagnostics
 
@@ -215,17 +232,23 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Note: Address info may not be available until after the socket has been binded, connected
  * or until after data has been sent.
 **/
-- (NSData *)localAddress;
-- (NSString *)localHost;
-- (uint16_t)localPort;
+-(NSData*)localAddress;
 
-- (NSData *)localAddress_IPv4;
-- (NSString *)localHost_IPv4;
-- (uint16_t)localPort_IPv4;
+-(NSString*)localHost;
 
-- (NSData *)localAddress_IPv6;
-- (NSString *)localHost_IPv6;
-- (uint16_t)localPort_IPv6;
+-(uint16_t)localPort;
+
+-(NSData*)localAddress_IPv4;
+
+-(NSString*)localHost_IPv4;
+
+-(uint16_t)localPort_IPv4;
+
+-(NSData*)localAddress_IPv6;
+
+-(NSString*)localHost_IPv6;
+
+-(uint16_t)localPort_IPv6;
 
 /**
  * Returns the remote address info for the socket.
@@ -237,22 +260,24 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * will not be available unless the socket is explicitly connected to a remote host/port.
  * If the socket is not connected, these methods will return nil / 0.
 **/
-- (NSData *)connectedAddress;
-- (NSString *)connectedHost;
-- (uint16_t)connectedPort;
+-(NSData*)connectedAddress;
+
+-(NSString*)connectedHost;
+
+-(uint16_t)connectedPort;
 
 /**
  * Returns whether or not this socket has been connected to a single host.
  * By design, UDP is a connectionless protocol, and connecting is not needed.
  * If connected, the socket will only be able to send/receive data to/from the connected host.
 **/
-- (BOOL)isConnected;
+-(BOOL)isConnected;
 
 /**
  * Returns whether or not this socket has been closed.
  * The only way a socket can be closed is if you explicitly call one of the close methods.
 **/
-- (BOOL)isClosed;
+-(BOOL)isClosed;
 
 /**
  * Returns whether or not this socket is IPv4.
@@ -262,7 +287,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * - The socket is explicitly bound to an IPv6 address
  * - The socket is connected to an IPv6 address
 **/
-- (BOOL)isIPv4;
+-(BOOL)isIPv4;
 
 /**
  * Returns whether or not this socket is IPv6.
@@ -275,7 +300,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * This method will also return false on platforms that do not support IPv6.
  * Note: The iPhone does not currently support IPv6.
 **/
-- (BOOL)isIPv6;
+-(BOOL)isIPv6;
 
 #pragma mark Binding
 
@@ -295,7 +320,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * On success, returns YES.
  * Otherwise returns NO, and sets errPtr. If you don't care about the error, you can pass NULL for errPtr.
 **/
-- (BOOL)bindToPort:(uint16_t)port error:(NSError **)errPtr;
+-(BOOL)bindToPort:(uint16_t)port error:(NSError**)errPtr;
 
 /**
  * Binds the UDP socket to the given port and optional interface.
@@ -317,7 +342,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * On success, returns YES.
  * Otherwise returns NO, and sets errPtr. If you don't care about the error, you can pass NULL for errPtr.
 **/
-- (BOOL)bindToPort:(uint16_t)port interface:(NSString *)interface error:(NSError **)errPtr;
+-(BOOL)bindToPort:(uint16_t)port interface:(NSString*)interface error:(NSError**)errPtr;
 
 /**
  * Binds the UDP socket to the given address, specified as a sockaddr structure wrapped in a NSData object.
@@ -337,7 +362,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * On success, returns YES.
  * Otherwise returns NO, and sets errPtr. If you don't care about the error, you can pass NULL for errPtr.
 **/
-- (BOOL)bindToAddress:(NSData *)localAddr error:(NSError **)errPtr;
+-(BOOL)bindToAddress:(NSData*)localAddr error:(NSError**)errPtr;
 
 #pragma mark Connecting
 
@@ -364,7 +389,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Otherwise, this method returns YES and begins the asynchronous connection process.
  * The result of the asynchronous connection process will be reported via the delegate methods.
  **/
-- (BOOL)connectToHost:(NSString *)host onPort:(uint16_t)port error:(NSError **)errPtr;
+-(BOOL)connectToHost:(NSString*)host onPort:(uint16_t)port error:(NSError**)errPtr;
 
 /**
  * Connects the UDP socket to the given address, specified as a sockaddr structure wrapped in a NSData object.
@@ -395,7 +420,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * However, for compatibility and simplification of delegate code, if this method returns YES
  * then the corresponding delegate method (udpSocket:didConnectToHost:port:) is still invoked.
 **/
-- (BOOL)connectToAddress:(NSData *)remoteAddr error:(NSError **)errPtr;
+-(BOOL)connectToAddress:(NSData*)remoteAddr error:(NSError**)errPtr;
 
 #pragma mark Multicast
 
@@ -406,7 +431,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * On success, returns YES.
  * Otherwise returns NO, and sets errPtr. If you don't care about the error, you can pass nil for errPtr.
 **/
-- (BOOL)joinMulticastGroup:(NSString *)group error:(NSError **)errPtr;
+-(BOOL)joinMulticastGroup:(NSString*)group error:(NSError**)errPtr;
 
 /**
  * Join multicast group.
@@ -416,10 +441,11 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * On success, returns YES.
  * Otherwise returns NO, and sets errPtr. If you don't care about the error, you can pass nil for errPtr.
 **/
-- (BOOL)joinMulticastGroup:(NSString *)group onInterface:(NSString *)interface error:(NSError **)errPtr;
+-(BOOL)joinMulticastGroup:(NSString*)group onInterface:(NSString*)interface error:(NSError**)errPtr;
 
-- (BOOL)leaveMulticastGroup:(NSString *)group error:(NSError **)errPtr;
-- (BOOL)leaveMulticastGroup:(NSString *)group onInterface:(NSString *)interface error:(NSError **)errPtr;
+-(BOOL)leaveMulticastGroup:(NSString*)group error:(NSError**)errPtr;
+
+-(BOOL)leaveMulticastGroup:(NSString*)group onInterface:(NSString*)interface error:(NSError**)errPtr;
 
 #pragma mark Broadcast
 
@@ -432,7 +458,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * The reason this is generally disabled by default (by the OS) is to prevent
  * accidental broadcast messages from flooding the network.
 **/
-- (BOOL)enableBroadcast:(BOOL)flag error:(NSError **)errPtr;
+-(BOOL)enableBroadcast:(BOOL)flag error:(NSError**)errPtr;
 
 #pragma mark Sending
 
@@ -475,7 +501,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * completes sending the bytes (which is NOT immediately after this method returns, but rather at a later time
  * when the delegate method notifies you), then you should first copy the bytes, and pass the copy to this method.
 **/
-- (void)sendData:(NSData *)data withTimeout:(NSTimeInterval)timeout tag:(long)tag;
+-(void)sendData:(NSData*)data withTimeout:(NSTimeInterval)timeout tag:(long)tag;
 
 /**
  * Asynchronously sends the given data, with the given timeout and tag, to the given host and port.
@@ -524,11 +550,11 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * completes sending the bytes (which is NOT immediately after this method returns, but rather at a later time
  * when the delegate method notifies you), then you should first copy the bytes, and pass the copy to this method.
 **/
-- (void)sendData:(NSData *)data
-          toHost:(NSString *)host
-            port:(uint16_t)port
-     withTimeout:(NSTimeInterval)timeout
-             tag:(long)tag;
+-(void)sendData:(NSData*)data
+         toHost:(NSString*)host
+           port:(uint16_t)port
+    withTimeout:(NSTimeInterval)timeout
+            tag:(long)tag;
 
 /**
  * Asynchronously sends the given data, with the given timeout and tag, to the given address.
@@ -572,7 +598,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * completes sending the bytes (which is NOT immediately after this method returns, but rather at a later time
  * when the delegate method notifies you), then you should first copy the bytes, and pass the copy to this method.
 **/
-- (void)sendData:(NSData *)data toAddress:(NSData *)remoteAddr withTimeout:(NSTimeInterval)timeout tag:(long)tag;
+-(void)sendData:(NSData*)data toAddress:(NSData*)remoteAddr withTimeout:(NSTimeInterval)timeout tag:(long)tag;
 
 /**
  * You may optionally set a send filter for the socket.
@@ -595,7 +621,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Note: This method invokes setSendFilter:withQueue:isAsynchronous: (documented below),
  *       passing YES for the isAsynchronous parameter.
 **/
-- (void)setSendFilter:(GCDAsyncUdpSocketSendFilterBlock)filterBlock withQueue:(dispatch_queue_t)filterQueue;
+-(void)setSendFilter:(GCDAsyncUdpSocketSendFilterBlock)filterBlock withQueue:(dispatch_queue_t)filterQueue;
 
 /**
  * The receive filter can be run via dispatch_async or dispatch_sync.
@@ -610,9 +636,9 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * then you cannot perform any tasks which may invoke dispatch_sync on the socket queue.
  * For example, you can't query properties on the socket.
 **/
-- (void)setSendFilter:(GCDAsyncUdpSocketSendFilterBlock)filterBlock
-            withQueue:(dispatch_queue_t)filterQueue
-       isAsynchronous:(BOOL)isAsynchronous;
+-(void)setSendFilter:(GCDAsyncUdpSocketSendFilterBlock)filterBlock
+           withQueue:(dispatch_queue_t)filterQueue
+      isAsynchronous:(BOOL)isAsynchronous;
 
 #pragma mark Receiving
 
@@ -640,7 +666,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * You forgot to first bind the socket to a port number, and received a error with a message like:
  * "Must bind socket before you can receive data."
 **/
-- (BOOL)receiveOnce:(NSError **)errPtr;
+-(BOOL)receiveOnce:(NSError**)errPtr;
 
 /**
  * There are two modes of operation for receiving packets: one-at-a-time & continuous.
@@ -666,7 +692,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * You forgot to first bind the socket to a port number, and received a error with a message like:
  * "Must bind socket before you can receive data."
 **/
-- (BOOL)beginReceiving:(NSError **)errPtr;
+-(BOOL)beginReceiving:(NSError**)errPtr;
 
 /**
  * If the socket is currently receiving (beginReceiving has been called), this method pauses the receiving.
@@ -680,7 +706,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * your didReceive delegate method may still be invoked after this method has been called.
  * You should be aware of this, and program defensively.
 **/
-- (void)pauseReceiving;
+-(void)pauseReceiving;
 
 /**
  * You may optionally set a receive filter for the socket.
@@ -727,7 +753,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Note: This method invokes setReceiveFilter:withQueue:isAsynchronous: (documented below),
  *       passing YES for the isAsynchronous parameter.
 **/
-- (void)setReceiveFilter:(GCDAsyncUdpSocketReceiveFilterBlock)filterBlock withQueue:(dispatch_queue_t)filterQueue;
+-(void)setReceiveFilter:(GCDAsyncUdpSocketReceiveFilterBlock)filterBlock withQueue:(dispatch_queue_t)filterQueue;
 
 /**
  * The receive filter can be run via dispatch_async or dispatch_sync.
@@ -742,9 +768,9 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * then you cannot perform any tasks which may invoke dispatch_sync on the socket queue.
  * For example, you can't query properties on the socket.
 **/
-- (void)setReceiveFilter:(GCDAsyncUdpSocketReceiveFilterBlock)filterBlock
-               withQueue:(dispatch_queue_t)filterQueue
-          isAsynchronous:(BOOL)isAsynchronous;
+-(void)setReceiveFilter:(GCDAsyncUdpSocketReceiveFilterBlock)filterBlock
+              withQueue:(dispatch_queue_t)filterQueue
+         isAsynchronous:(BOOL)isAsynchronous;
 
 #pragma mark Closing
 
@@ -755,7 +781,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * The GCDAsyncUdpSocket instance may optionally be used again.
  *   (it will setup/configure/use another unnderlying BSD socket).
 **/
-- (void)close;
+-(void)close;
 
 /**
  * Closes the underlying socket after all pending send operations have been sent.
@@ -763,7 +789,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * The GCDAsyncUdpSocket instance may optionally be used again.
  *   (it will setup/configure/use another unnderlying BSD socket).
 **/
-- (void)closeAfterSending;
+-(void)closeAfterSending;
 
 #pragma mark Advanced
 
@@ -795,7 +821,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * 
  * If you save references to any protected variables and use them outside the block, you do so at your own peril.
 **/
-- (void)performBlock:(dispatch_block_t)block;
+-(void)performBlock:(dispatch_block_t)block;
 
 /**
  * These methods are only available from within the context of a performBlock: invocation.
@@ -805,9 +831,11 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * If the socket isn't connected, or explicity bound to a particular interface,
  * it might actually have multiple internal socket file descriptors - one for IPv4 and one for IPv6.
 **/
-- (int)socketFD;
-- (int)socket4FD;
-- (int)socket6FD;
+-(int)socketFD;
+
+-(int)socket4FD;
+
+-(int)socket6FD;
 
 #if TARGET_OS_IPHONE
 
@@ -855,15 +883,19 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * Extracting host/port/family information from raw address data.
 **/
 
-+ (NSString *)hostFromAddress:(NSData *)address;
-+ (uint16_t)portFromAddress:(NSData *)address;
-+ (int)familyFromAddress:(NSData *)address;
++(NSString*)hostFromAddress:(NSData*)address;
 
-+ (BOOL)isIPv4Address:(NSData *)address;
-+ (BOOL)isIPv6Address:(NSData *)address;
++(uint16_t)portFromAddress:(NSData*)address;
 
-+ (BOOL)getHost:(NSString **)hostPtr port:(uint16_t *)portPtr fromAddress:(NSData *)address;
-+ (BOOL)getHost:(NSString **)hostPtr port:(uint16_t *)portPtr family:(int *)afPtr fromAddress:(NSData *)address;
++(int)familyFromAddress:(NSData*)address;
+
++(BOOL)isIPv4Address:(NSData*)address;
+
++(BOOL)isIPv6Address:(NSData*)address;
+
++(BOOL)getHost:(NSString**)hostPtr port:(uint16_t*)portPtr fromAddress:(NSData*)address;
+
++(BOOL)getHost:(NSString**)hostPtr port:(uint16_t*)portPtr family:(int*)afPtr fromAddress:(NSData*)address;
 
 @end
 
@@ -881,7 +913,7 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * 
  * This method is called if one of the connect methods are invoked, and the connection is successful.
 **/
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didConnectToAddress:(NSData *)address;
+-(void)udpSocket:(GCDAsyncUdpSocket*)sock didConnectToAddress:(NSData*)address;
 
 /**
  * By design, UDP is a connectionless protocol, and connecting is not needed.
@@ -891,30 +923,30 @@ typedef BOOL (^GCDAsyncUdpSocketSendFilterBlock)(NSData *data, NSData *address, 
  * This method is called if one of the connect methods are invoked, and the connection fails.
  * This may happen, for example, if a domain name is given for the host and the domain name is unable to be resolved.
 **/
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotConnect:(NSError *)error;
+-(void)udpSocket:(GCDAsyncUdpSocket*)sock didNotConnect:(NSError*)error;
 
 /**
  * Called when the datagram with the given tag has been sent.
 **/
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag;
+-(void)udpSocket:(GCDAsyncUdpSocket*)sock didSendDataWithTag:(long)tag;
 
 /**
  * Called if an error occurs while trying to send a datagram.
  * This could be due to a timeout, or something more serious such as the data being too large to fit in a sigle packet.
 **/
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error;
+-(void)udpSocket:(GCDAsyncUdpSocket*)sock didNotSendDataWithTag:(long)tag dueToError:(NSError*)error;
 
 /**
  * Called when the socket has received the requested datagram.
 **/
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
-                                             fromAddress:(NSData *)address
-                                       withFilterContext:(id)filterContext;
+-(void)udpSocket:(GCDAsyncUdpSocket*)sock didReceiveData:(NSData*)data
+      fromAddress:(NSData*)address
+withFilterContext:(id)filterContext;
 
 /**
  * Called when the socket is closed.
 **/
-- (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error;
+-(void)udpSocketDidClose:(GCDAsyncUdpSocket*)sock withError:(NSError*)error;
 
 @end
 

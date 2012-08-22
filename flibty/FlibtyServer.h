@@ -18,11 +18,12 @@ extern const NSString* const POLICY_FILE;
     NSData* policyData;
     NSMutableArray* connectedSockets;
     dispatch_queue_t socketQueue;
-    
+
     BOOL isRunning;
 }
 
 -(void)start:(NSString*)host port:(int)port;
+
 -(void)stop;
 
 @property(readonly, nonatomic) GCDAsyncSocket* socket;
@@ -35,5 +36,5 @@ extern const NSString* const POLICY_FILE;
  * the private methods interface
  */
 @interface FlibtyServer (private)
-- (BOOL)isBetween:(int)value min:(int)min max:(int)max;
+-(BOOL)isBetween:(int)value min:(int)min max:(int)max;
 @end

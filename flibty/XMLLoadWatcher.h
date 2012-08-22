@@ -3,21 +3,20 @@
 #import "XMLLoader.h"
 #import "XMLLoaderDelegate.h"
 
-// Type the callback block
-typedef void(^CallbackBlock)(XML* xml);
+typedef void(^XMLLoadCallback)(XML* xml);
 
 @interface XMLLoadWatcher : NSObject <XMLLoaderDelegate> {
-    CallbackBlock callback;
+    XMLLoadCallback callback;
 }
 
-+ (id)watcher:(XMLLoader*)loader onLoadComplete:(void(^)(XML* xml))completeCallback;
++(id)watcher:(XMLLoader*)loader onLoadComplete:(XMLLoadCallback)completeCallback;
 
-- (void)watch:(XMLLoader*)loader onLoadComplete:(void(^)(XML* xml))completeCallback;
+-(void)watch:(XMLLoader*)loader onLoadComplete:(XMLLoadCallback)completeCallback;
 
-- (void)xmlLoadStarted:(XMLLoader*)loader;
+-(void)xmlLoadStarted:(XMLLoader*)loader;
 
-- (void)xmlLoadCompleted:(XMLLoader*)loader withResult:(XML*)xml;
+-(void)xmlLoadCompleted:(XMLLoader*)loader withResult:(XML*)xml;
 
-- (void)xmlLoadError:(XMLLoader*)loader withError:(NSError*)error;
+-(void)xmlLoadError:(XMLLoader*)loader withError:(NSError*)error;
 
 @end

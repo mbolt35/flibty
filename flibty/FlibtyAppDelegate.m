@@ -14,14 +14,14 @@
 @synthesize window;
 @synthesize server;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+-(void)applicationDidFinishLaunching:(NSNotification*)aNotification {
     window.title = @"Flibty";
-    
+
     server = [[FlibtyServer alloc] init];
     [server start:@"localhost" port:4444];
 }
 
--(void)applicationWillTerminate:(NSNotification *)notification {
+-(void)applicationWillTerminate:(NSNotification*)notification {
     if (nil != server && server.isRunning) {
         [server stop];
     }

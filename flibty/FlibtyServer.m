@@ -17,16 +17,16 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
 @synthesize socket;
 @synthesize isRunning;
 
-- (id)init {
-    if((self = [super init])) {
+-(id)init {
+    if ((self = [super init])) {
         socketQueue = dispatch_queue_create("socketQueue", NULL);
         socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
         connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
         policyData = [POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding];
-        
+
         isRunning = NO;
     }
-    
+
     return self;
 }
 
@@ -39,13 +39,13 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
         NSLog(@"Incorrect port value: %d - must be between 0 and 65535", port);
         return;
     }
-                    
-    NSError *error = nil;
+
+    NSError* error = nil;
     if (![socket acceptOnInterface:host port:port error:&error]) {
         NSLog(@"Error starting server: %@", error);
         return;
     }
-    
+
     NSLog(@"Server started on port %hu", [socket localPort]);
     isRunning = YES;
 }
@@ -55,18 +55,18 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
         NSLog(@"Server is not running. Nothing to stop");
         return;
     }
-    
+
     [socket disconnect];
-    
+
     // Stop any client connections
-    @synchronized(connectedSockets) {
+    @synchronized (connectedSockets) {
         NSUInteger i;
         for (i = 0; i < connectedSockets.count; i++) {
             [[connectedSockets objectAtIndex:i] disconnect];
         }
     }
 
-    
+
     isRunning = NO;
 }
 
@@ -75,19 +75,19 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
 }
 
 -(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
-    @synchronized(connectedSockets) {
+    @synchronized (connectedSockets) {
         [connectedSockets addObject:newSocket];
     }
-    
+
     NSString* host = [newSocket connectedHost];
     UInt16 port = [newSocket connectedPort];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             NSLog(@"Accepted client %@:%hu", host, port);
         }
     });
-    
+
     [newSocket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
 }
 
@@ -100,26 +100,26 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
 -(void)socket:(GCDAsyncSocket*)sock didReadData:(NSData*)data withTag:(long)tag {
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
-            NSData *strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
-            NSString *msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
-            
+            NSData* strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
+            NSString* msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
+
             if (msg) {
                 if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
                     NSLog(@"Policy file requested, serving.");
                     [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
                 } else {
                     NSRange range = [msg rangeOfString:@"!SOS"];
-                
+
                     if (range.location != NSNotFound) {
                         NSString* xmlString = [msg substringFromIndex:range.location + range.length];
-                    
+
                         [XML loadXmlString:xmlString onLoadComplete:^(XML* xml) {
                             @autoreleasepool {
                                 NSLog(@"key: %@, value: %@", [xml attributeByName:@"key"], xml.nodeValue);
                             }
                         }];
                     }
-                    
+
                     // Queue next read
                     [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
                 }
@@ -130,15 +130,15 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
     });
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket*)sock withError:(NSError*)err {
+-(void)socketDidDisconnect:(GCDAsyncSocket*)sock withError:(NSError*)err {
     if (sock != socket) {
         dispatch_async(dispatch_get_main_queue(), ^{
             @autoreleasepool {
                 NSLog(@"client disconnected, error: %@", err);
             }
         });
-        
-        @synchronized(connectedSockets) {
+
+        @synchronized (connectedSockets) {
             [connectedSockets removeObject:sock];
         }
     }

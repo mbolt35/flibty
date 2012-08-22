@@ -11,10 +11,11 @@
 @protocol XMLLoaderDelegate <NSObject>
 
 @required
-- (void)xmlLoadCompleted:(XMLLoader*)loader withResult:(XML*)xml;
+-(void)xmlLoadCompleted:(XMLLoader*)loader withResult:(XML*)xml;
 
 @optional
-- (void)xmlLoadStarted:(XMLLoader*)loader;
-- (void)xmlLoadError:(XMLLoader*)loader withError:(NSError*)error;
+-(void)xmlLoadStarted:(XMLLoader*)loader;
+
+-(void)xmlLoadError:(XMLLoader*)loader withError:(NSError*)error;
 
 @end
