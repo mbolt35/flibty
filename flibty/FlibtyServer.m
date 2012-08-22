@@ -10,7 +10,12 @@
 
 const NSUInteger POLICY_TAG = 10;
 
-const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\">\n<cross-domain-policy>\n    <allow-access-from domain=\"*\" to-ports=\"*\" />\n</cross-domain-policy>\x00";
+const NSString* const POLICY_FILE = @""
+        "<?xml version=\"1.0\"?>\n"
+        "<!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\">\n"
+        "<cross-domain-policy>\n"
+        "    <allow-access-from domain=\"*\" to-ports=\"*\" />\n"
+        "</cross-domain-policy>\x00";
 
 @implementation FlibtyServer
 
@@ -68,10 +73,6 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
 
 
     isRunning = NO;
-}
-
--(BOOL)isBetween:(int)value min:(int)min max:(int)max {
-    return value >= min && value <= max;
 }
 
 -(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
@@ -142,6 +143,14 @@ const NSString* const POLICY_FILE = @"<?xml version=\"1.0\"?>\n<!DOCTYPE cross-d
             [connectedSockets removeObject:sock];
         }
     }
+}
+
+/**
+ * @private
+ * ensures a range
+ */
+-(BOOL)isBetween:(int)value min:(int)min max:(int)max {
+    return value >= min && value <= max;
 }
 
 @end
