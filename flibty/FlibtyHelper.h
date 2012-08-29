@@ -19,19 +19,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class GCDAsyncSocket;
 
-@interface StringUtil : NSObject {
 
-}
+@interface FlibtyHelper : NSObject
 
 /**
- * This method concatenates two strings and returns the result.
+ * This method is used to determine the key to use for a client socket connection.
  */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
++(NSString*)keyFor:(GCDAsyncSocket*)socket;
 
 @end

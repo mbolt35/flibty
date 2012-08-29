@@ -17,21 +17,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+#import "FlibtyHelper.h"
+#import "GCDAsyncSocket.h"
 
 
-@interface StringUtil : NSObject {
-
-}
+@implementation FlibtyHelper
 
 /**
- * This method concatenates two strings and returns the result.
+ * This method is used to determine the key to use for a client socket connection.
  */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
++(NSString*)keyFor:(GCDAsyncSocket*)socket {
+    return [NSString stringWithFormat:@"%@:%hu", socket.connectedHost, socket.connectedPort];
+}
 
 @end

@@ -14,7 +14,6 @@
 }
 
 @property(assign) IBOutlet NSWindow* window;
-@property(assign) IBOutlet NSTextView* textView;
 @property(readonly, nonatomic) FlibtyServer* server;
 
 @end

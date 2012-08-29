@@ -18,35 +18,38 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "FlibtyConnectionDelegate.h"
-#import "GCDAsyncSocket.h"
-#import "XML.h"
 
-@protocol LogTargetFactory;
+@class GCDAsyncSocket;
+@class FlibtyServer;
+@protocol FlibtyConnectionDelegate;
+@protocol LogTarget;
+@protocol LogParser;
 
-@interface FlibtyServer : NSObject<FlibtyConnectionDelegate> {
+extern const NSUInteger LOG_TAG;
+extern const NSUInteger POLICY_TAG;
+extern const NSString* const POLICY_FILE;
+
+@interface FlibtyConnection : NSObject {
     GCDAsyncSocket* socket;
-    NSMutableDictionary* connectedSockets;
-    id<LogTargetFactory> logFactory;
-    dispatch_queue_t socketQueue;
+    NSString* key;
+    NSData* policyData;
 
-    BOOL isRunning;
+    id<LogTarget> logTarget;
+    id<LogParser> logParser;
+    __weak id<FlibtyConnectionDelegate> delegate;
 }
 
--(id)initWith:(id<LogTargetFactory>)loggerFactory;
--(void)start:(NSString*)host port:(int)port;
--(void)stop;
+-(id)initWith:(GCDAsyncSocket*)clientSocket andLogTarget:(id<LogTarget>)logTarget parsedWith:(id<LogParser>)parser;
+-(void)disconnect;
 
+@property(readonly, nonatomic) NSString* key;
 @property(readonly, nonatomic) GCDAsyncSocket* socket;
-@property(readwrite, nonatomic) id<LogTargetFactory> logFactory;
-@property(readonly, nonatomic) BOOL isRunning;
+@property(weak) id<FlibtyConnectionDelegate> delegate;
+@property(readonly, nonatomic) id<LogTarget> logTarget;
+@property(readonly, nonatomic) id<LogParser> logParser;
 
 @end
 
-/**
- * @private
- * the private methods interface
- */
-@interface FlibtyServer (private)
--(BOOL)isBetween:(int)value min:(int)min max:(int)max;
+@interface FlibtyConnection(private)
+-(void)parseAndLog:(NSData*)data;
 @end

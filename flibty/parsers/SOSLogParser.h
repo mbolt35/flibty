@@ -18,20 +18,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "LogParser.h"
 
 
-@interface StringUtil : NSObject {
+@interface SOSLogParser : NSObject<LogParser> {
 
 }
 
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
+-(void)parse:(NSData*)data andCallback:(LogParseCallback)callback;
 
 @end

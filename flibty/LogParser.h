@@ -17,21 +17,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+@class Log;
+
+typedef void(^LogParseCallback)(Log* log);
+
+@protocol LogParser <NSObject>
+
+@required
+-(void)parse:(NSData*)data andCallback:(LogParseCallback)callback;
 
 
-@interface StringUtil : NSObject {
-
-}
-
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
+@optional
 
 @end

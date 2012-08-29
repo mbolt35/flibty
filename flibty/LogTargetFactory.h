@@ -17,21 +17,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+@protocol LogTarget;
 
+@protocol LogTargetFactory <NSObject>
 
-@interface StringUtil : NSObject {
+@required
+-(id<LogTarget>)newLogTarget;
 
-}
-
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
+@optional
 
 @end

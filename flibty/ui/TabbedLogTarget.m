@@ -17,21 +17,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+#import "TabbedLogTarget.h"
 
 
-@interface StringUtil : NSObject {
+@implementation TabbedLogTarget
 
+-(void)log:(NSString*)level message:(NSString*)message {
+    NSLog(@"[%@] %@", level, message);
 }
-
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
 
 @end

@@ -1,35 +1,48 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  FlibtyServer.m
-//  flibty
+//  MATTBOLT.BLOGSPOT.COM
+//  Copyright(C) 2012 Matt Bolt
 //
-//  Created by Matt Bolt on 8/19/12.
-//  Copyright (c) 2012 Matt Bolt. All rights reserved.
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at:
 //
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////
 
 #import "FlibtyServer.h"
-
-const NSUInteger POLICY_TAG = 10;
-
-const NSString* const POLICY_FILE = @""
-        "<?xml version=\"1.0\"?>\n"
-        "<!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\">\n"
-        "<cross-domain-policy>\n"
-        "    <allow-access-from domain=\"*\" to-ports=\"*\" />\n"
-        "</cross-domain-policy>\x00";
+#import "FlibtyConnection.h"
+#import "LogTargetFactory.h"
+#import "SOSLogParser.h"
 
 @implementation FlibtyServer
 
 @synthesize socket;
+@synthesize logFactory;
 @synthesize isRunning;
 
 -(id)init {
     if ((self = [super init])) {
         socketQueue = dispatch_queue_create("socketQueue", NULL);
         socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
-        connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
-        policyData = [POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding];
+        connectedSockets = [[NSMutableDictionary alloc] initWithCapacity:1];
 
         isRunning = NO;
+    }
+
+    return self;
+}
+
+-(id)initWith:(id<LogTargetFactory>)loggerFactory {
+    if (self = [self init]) {
+        logFactory = loggerFactory;
     }
 
     return self;
@@ -46,7 +59,7 @@ const NSString* const POLICY_FILE = @""
     }
 
     NSError* error = nil;
-    if (![socket acceptOnInterface:host port:port error:&error]) {
+    if (![socket acceptOnInterface:host port:(uint16_t)port error:&error]) {
         NSLog(@"Error starting server: %@", error);
         return;
     }
@@ -66,88 +79,46 @@ const NSString* const POLICY_FILE = @""
     // Stop any client connections
     @synchronized (connectedSockets) {
         NSUInteger i;
-        for (i = 0; i < connectedSockets.count; i++) {
-            [[connectedSockets objectAtIndex:i] disconnect];
+        for (i = 0; i < connectedSockets.allKeys.count; ++i) {
+            NSString* socketKey = [connectedSockets.allKeys objectAtIndex:i];
+            [[connectedSockets objectForKey:socketKey] disconnect];
         }
     }
-
 
     isRunning = NO;
 }
 
 -(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
+    FlibtyConnection* connection = [[FlibtyConnection alloc]
+            initWith:newSocket
+            andLogTarget:[logFactory newLogTarget]
+            parsedWith:[[SOSLogParser alloc] init]];
+
+    connection.delegate = self;
+
     @synchronized (connectedSockets) {
-        [connectedSockets addObject:newSocket];
+        [connectedSockets setValue:connection forKey:connection.key];
     }
-
-    NSString* host = [newSocket connectedHost];
-    UInt16 port = [newSocket connectedPort];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
-            NSLog(@"Accepted client %@:%hu", host, port);
-        }
-    });
-
-    [newSocket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
-}
-
--(void)socket:(GCDAsyncSocket*)sock didWriteDataWithTag:(long)tag {
-    if (tag == POLICY_TAG) {
-        [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
-    }
-}
-
--(void)socket:(GCDAsyncSocket*)sock didReadData:(NSData*)data withTag:(long)tag {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        @autoreleasepool {
-            NSData* strData = [data subdataWithRange:NSMakeRange(0, data.length - 1)];
-            NSString* msg = [[NSString alloc] initWithData:strData encoding:NSUTF8StringEncoding];
-
-            if (msg) {
-                if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
-                    NSLog(@"Policy file requested, serving.");
-                    [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
-                } else {
-                    NSRange range = [msg rangeOfString:@"!SOS"];
-
-                    if (range.location != NSNotFound) {
-                        NSString* xmlString = [msg substringFromIndex:range.location + range.length];
-
-                        [XML loadXmlString:xmlString onLoadComplete:^(XML* xml) {
-                            @autoreleasepool {
-                                NSLog(@"key: %@, value: %@", [xml attributeByName:@"key"], xml.nodeValue);
-                            }
-                        }];
-                    }
-
-                    // Queue next read
-                    [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
-                }
-            } else {
-                NSLog(@"Error converting received data into UTF-8 String");
-            }
+            NSLog(@"Accepted client: %@", connection.key);
         }
     });
 }
 
--(void)socketDidDisconnect:(GCDAsyncSocket*)sock withError:(NSError*)err {
-    if (sock != socket) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @autoreleasepool {
-                NSLog(@"client disconnected, error: %@", err);
-            }
-        });
-
-        @synchronized (connectedSockets) {
-            [connectedSockets removeObject:sock];
+-(void)socketDisconnected:(FlibtyConnection*)connection {
+    [connectedSockets removeObjectForKey:connection.key];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @autoreleasepool {
+            NSLog(@"Removed client connection for key: %@ - %lu connections remaining.", connection.key, connectedSockets.count);
         }
-    }
+    });
 }
 
 /**
  * @private
- * ensures a range
+ * ensures a range -- TODO: NSRange?
  */
 -(BOOL)isBetween:(int)value min:(int)min max:(int)max {
     return value >= min && value <= max;

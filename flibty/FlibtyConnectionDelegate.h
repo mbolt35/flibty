@@ -17,21 +17,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+@class FlibtyConnection;
+
+@protocol FlibtyConnectionDelegate <NSObject>
+
+@required
+// ...
+
+@optional
+-(void)policyFileSent:(FlibtyConnection*)connection;
+-(void)socketDisconnected:(FlibtyConnection*)connection;
 
 
-@interface StringUtil : NSObject {
-
-}
-
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
-
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
 
 @end

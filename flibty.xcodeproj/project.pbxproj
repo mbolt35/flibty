@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		129F9183C4FBA0F1ADAB305C /* SOSLogParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9E9795DE5A15543DA9BC /* SOSLogParser.m */; };
+		129F928613486D0B36A148EC /* Log.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F98343F0DC04A71AB1EF5 /* Log.h */; };
+		129F92A5B5FE7B83200D48DA /* TabbedLogTargetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */; };
+		129F9378547C2388AF24C8A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4936AA15E195C60003DAB1 /* Security.framework */; };
+		129F95D4BE481C6458E79422 /* TabbedLogTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F90EE3F9D9859EE462B3D /* TabbedLogTarget.m */; };
+		129F987384621A290787BAE5 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9D2D50CCDE77F58E720B /* Log.m */; };
+		129F98F7DC61E600EE043935 /* LogParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F9A960855E49E0F931449 /* LogParser.h */; };
+		129F9DA3331281DE06BEB3E1 /* FlibtyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F904DDAEE790B5C6C3E4B /* FlibtyHelper.m */; };
+		129F9E8448EF08E746A3673C /* SOSLogParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F9D6208E40F188A298B13 /* SOSLogParser.h */; };
+		129F9F10642223C20D11D52B /* FlibtyConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9CEC79518C7329A376C7 /* FlibtyConnection.m */; };
 		9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
 		9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367215E0A2350003DAB1 /* InfoPlist.strings */; };
 		9F49367615E0A2350003DAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49367515E0A2350003DAB1 /* main.m */; };
@@ -30,7 +40,6 @@
 		9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
 		9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
 		9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
-		9F4936C815E298E90003DAB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4936C715E298E80003DAB1 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +52,38 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9F17176715EB3386006466A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				129F98F7DC61E600EE043935 /* LogParser.h in CopyFiles */,
+				129F928613486D0B36A148EC /* Log.h in CopyFiles */,
+				129F9E8448EF08E746A3673C /* SOSLogParser.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		129F904DDAEE790B5C6C3E4B /* FlibtyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlibtyHelper.m; sourceTree = "<group>"; };
+		129F90DA597C88DAADA839CE /* TabbedLogTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbedLogTarget.h; sourceTree = "<group>"; };
+		129F90EE3F9D9859EE462B3D /* TabbedLogTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbedLogTarget.m; sourceTree = "<group>"; };
+		129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbedLogTargetFactory.m; sourceTree = "<group>"; };
+		129F93462FCDA1B7329B7297 /* FlibtyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyConnection.h; sourceTree = "<group>"; };
+		129F9445D5FFE430C604B481 /* LogTargetFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTargetFactory.h; sourceTree = "<group>"; };
+		129F97A14E2D76F8CC912A8D /* FlibtyConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyConnectionDelegate.h; sourceTree = "<group>"; };
+		129F97B6724370C268482330 /* TabbedLogTargetFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbedLogTargetFactory.h; sourceTree = "<group>"; };
+		129F98343F0DC04A71AB1EF5 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		129F98EEC8E1C6076A1EB708 /* LogTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTarget.h; sourceTree = "<group>"; };
+		129F9A88B967C8D9E26F7274 /* FlibtyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyHelper.h; sourceTree = "<group>"; };
+		129F9A960855E49E0F931449 /* LogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogParser.h; sourceTree = "<group>"; };
+		129F9CEC79518C7329A376C7 /* FlibtyConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlibtyConnection.m; sourceTree = "<group>"; };
+		129F9D2D50CCDE77F58E720B /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		129F9D6208E40F188A298B13 /* SOSLogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSLogParser.h; sourceTree = "<group>"; };
+		129F9E9795DE5A15543DA9BC /* SOSLogParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSLogParser.m; sourceTree = "<group>"; };
 		9F49366515E0A2350003DAB1 /* flibty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flibty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F49366915E0A2350003DAB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9F49366C15E0A2350003DAB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -69,7 +109,6 @@
 		9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		9F4936A515E1891D0003DAB1 /* FlibtyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyServer.h; sourceTree = "<group>"; };
 		9F4936A615E1891D0003DAB1 /* FlibtyServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlibtyServer.m; sourceTree = "<group>"; };
-		9F4936A815E195B20003DAB1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9F4936AA15E195C60003DAB1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9F4936B615E2935A0003DAB1 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
 		9F4936B715E2935A0003DAB1 /* StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtil.m; sourceTree = "<group>"; };
@@ -80,7 +119,6 @@
 		9F4936BC15E2935A0003DAB1 /* XMLLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoaderDelegate.h; sourceTree = "<group>"; };
 		9F4936BD15E2935A0003DAB1 /* XMLLoadWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoadWatcher.h; sourceTree = "<group>"; };
 		9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLLoadWatcher.m; sourceTree = "<group>"; };
-		9F4936C715E298E80003DAB1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F4936C815E298E90003DAB1 /* Security.framework in Frameworks */,
 				9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */,
+				129F9378547C2388AF24C8A6 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,10 +143,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		129F95FAE018880544361E57 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				129F97B6724370C268482330 /* TabbedLogTargetFactory.h */,
+				129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */,
+				129F90DA597C88DAADA839CE /* TabbedLogTarget.h */,
+				129F90EE3F9D9859EE462B3D /* TabbedLogTarget.m */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		129F97E4E4711F8EBFB2FEC1 /* parsers */ = {
+			isa = PBXGroup;
+			children = (
+				129F9D6208E40F188A298B13 /* SOSLogParser.h */,
+				129F9E9795DE5A15543DA9BC /* SOSLogParser.m */,
+			);
+			path = parsers;
+			sourceTree = "<group>";
+		};
 		9F49365A15E0A2350003DAB1 = {
 			isa = PBXGroup;
 			children = (
-				9F4936C715E298E80003DAB1 /* Security.framework */,
 				9F49366F15E0A2350003DAB1 /* flibty */,
 				9F49368C15E0A2360003DAB1 /* flibtyTests */,
 				9F49366815E0A2350003DAB1 /* Frameworks */,
@@ -129,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				9F4936AA15E195C60003DAB1 /* Security.framework */,
-				9F4936A815E195B20003DAB1 /* CFNetwork.framework */,
 				9F49366915E0A2350003DAB1 /* Cocoa.framework */,
 				9F49368715E0A2360003DAB1 /* SenTestingKit.framework */,
 				9F49366B15E0A2350003DAB1 /* Other Frameworks */,
@@ -157,6 +213,8 @@
 				9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */,
 				9F49367E15E0A2350003DAB1 /* MainMenu.xib */,
 				9F49367015E0A2350003DAB1 /* Supporting Files */,
+				129F95FAE018880544361E57 /* ui */,
+				129F97E4E4711F8EBFB2FEC1 /* parsers */,
 			);
 			path = flibty;
 			sourceTree = "<group>";
@@ -206,6 +264,16 @@
 		9F4936A415E188E40003DAB1 /* log */ = {
 			isa = PBXGroup;
 			children = (
+				129F98343F0DC04A71AB1EF5 /* Log.h */,
+				129F9D2D50CCDE77F58E720B /* Log.m */,
+				129F9A960855E49E0F931449 /* LogParser.h */,
+				129F9445D5FFE430C604B481 /* LogTargetFactory.h */,
+				129F98EEC8E1C6076A1EB708 /* LogTarget.h */,
+				129F9A88B967C8D9E26F7274 /* FlibtyHelper.h */,
+				129F904DDAEE790B5C6C3E4B /* FlibtyHelper.m */,
+				129F97A14E2D76F8CC912A8D /* FlibtyConnectionDelegate.h */,
+				129F93462FCDA1B7329B7297 /* FlibtyConnection.h */,
+				129F9CEC79518C7329A376C7 /* FlibtyConnection.m */,
 				9F4936A515E1891D0003DAB1 /* FlibtyServer.h */,
 				9F4936A615E1891D0003DAB1 /* FlibtyServer.m */,
 			);
@@ -235,6 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F49369715E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibty" */;
 			buildPhases = (
+				9F17176715EB3386006466A0 /* CopyFiles */,
 				9F49366115E0A2350003DAB1 /* Sources */,
 				9F49366215E0A2350003DAB1 /* Frameworks */,
 				9F49366315E0A2350003DAB1 /* Resources */,
@@ -346,6 +415,12 @@
 				9F4936C115E2935A0003DAB1 /* XML.m in Sources */,
 				9F4936C315E2935A0003DAB1 /* XMLLoader.m in Sources */,
 				9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */,
+				129F9F10642223C20D11D52B /* FlibtyConnection.m in Sources */,
+				129F9DA3331281DE06BEB3E1 /* FlibtyHelper.m in Sources */,
+				129F95D4BE481C6458E79422 /* TabbedLogTarget.m in Sources */,
+				129F92A5B5FE7B83200D48DA /* TabbedLogTargetFactory.m in Sources */,
+				129F987384621A290787BAE5 /* Log.m in Sources */,
+				129F9183C4FBA0F1ADAB305C /* SOSLogParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +538,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
 				INFOPLIST_FILE = "flibty/flibty-Info.plist";
@@ -471,7 +552,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -481,6 +562,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
 				INFOPLIST_FILE = "flibty/flibty-Info.plist";
@@ -489,7 +576,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -543,6 +630,7 @@
 				9F49369915E0A2360003DAB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F49369A15E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibtyTests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +639,7 @@
 				9F49369C15E0A2360003DAB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

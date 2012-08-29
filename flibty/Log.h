@@ -20,18 +20,21 @@
 #import <Foundation/Foundation.h>
 
 
-@interface StringUtil : NSObject {
+@interface Log : NSObject {
+    NSString* level;
+    NSString* message;
 
+    BOOL isMultiLine;
+    BOOL isPolicyFileRequest;
 }
 
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
+-(id)initAsPolicyFileRequest;
 
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
+-(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage;
+-(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage isMultipleLines:(BOOL)multiLine;
 
+@property(readonly, nonatomic) NSString* level;
+@property(readonly, nonatomic) NSString* message;
+@property(readonly, nonatomic) BOOL isMultiLine;
+@property(readonly, nonatomic) BOOL isPolicyFileRequest;
 @end

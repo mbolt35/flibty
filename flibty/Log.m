@@ -17,21 +17,40 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+#import "Log.h"
 
+@implementation Log
 
-@interface StringUtil : NSObject {
+@synthesize level;
+@synthesize message;
+@synthesize isMultiLine;
+@synthesize isPolicyFileRequest;
 
+-(id)initAsPolicyFileRequest {
+    self = [self initWith:@"" andMessage:@"" isMultipleLines:NO];
+
+    if (self) {
+        isPolicyFileRequest = YES;
+    }
+
+    return self;
 }
 
-/**
- * This method concatenates two strings and returns the result.
- */
-+(NSString*)concat:(NSString*)firstString withString:(NSString*)secondString;
+-(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage {
+    return [self initWith:logLevel andMessage:logMessage isMultipleLines:NO];
+}
 
-/**
-* This method concatenates multiple strings and returns the result.
-*/
-+(NSString*)concatenate:(NSString*)firstString withString:(NSString*)secondString, ...;
+-(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage isMultipleLines:(BOOL)multiLine {
+    self = [super init];
+
+    if (self) {
+        level = logLevel;
+        message = logMessage;
+        isMultiLine = multiLine;
+        isPolicyFileRequest = NO;
+    }
+
+    return self;
+}
 
 @end
