@@ -18,12 +18,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TabbedLogTarget.h"
+#import "Log.h"
 
 
 @implementation TabbedLogTarget
 
--(void)log:(NSString*)level message:(NSString*)message {
-    NSLog(@"[%@] %@", level, message);
+
+-(id)initWith:(LogContainer *)container {
+    if ((self = [super init])) {
+        logContainer = container;
+    }
+    return self;
+}
+
+-(void)log:(Log*)log {
+    //NSLog(@"[%@] %@", log.level, log.message);
+    [logContainer addLog:log];
 }
 
 @end

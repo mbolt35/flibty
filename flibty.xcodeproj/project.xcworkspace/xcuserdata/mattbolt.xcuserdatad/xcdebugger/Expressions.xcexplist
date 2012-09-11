@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "NSApplicationMain:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "-[LogDataSource outlineView:objectValueForTableColumn:byItem:]:LogDataSource.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(Log*)[logEntries objectAtIndex:0]">
+            </PersistentString>
+            <PersistentString
+               value = "(Log*)[logEntries objectAtIndex:1]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LogDataSource init]:LogDataSource.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[NSOutlineView _dataSourceValueForColumn:row:]:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "(LogDataSource*)dataSource">
+            </PersistentString>
+            <PersistentString
+               value = "(NSMutableArray*)logEntries">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

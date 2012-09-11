@@ -17,12 +17,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+@class Log;
+
 @protocol LogTarget <NSObject>
 
 @required
--(void)log:(NSString*)level message:(NSString*)message;
-
+-(void)log:(Log*)log;
 
 @optional
+
 
 @end

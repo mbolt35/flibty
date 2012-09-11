@@ -19,8 +19,12 @@
 
 #import <Foundation/Foundation.h>
 #import "LogTargetFactory.h"
+#import "LogContainer.h"
 
+@interface TabbedLogTargetFactory : NSObject<LogTargetFactory> {
+    LogContainer* logContainer;
+}
 
-@interface TabbedLogTargetFactory : NSObject<LogTargetFactory>
+-(id)initWith:(LogContainer*)container;
 
 @end

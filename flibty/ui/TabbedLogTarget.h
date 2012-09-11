@@ -19,8 +19,14 @@
 
 #import <Foundation/Foundation.h>
 #import "LogTarget.h"
+#import "LogContainer.h"
 
 
-@interface TabbedLogTarget : NSObject<LogTarget>
--(void)log:(NSString*)level message:(NSString*)message;
+@interface TabbedLogTarget : NSObject<LogTarget> {
+    LogContainer* logContainer;
+}
+
+-(id)initWith:(LogContainer*)container;
+-(void)log:(Log*)log;
+
 @end

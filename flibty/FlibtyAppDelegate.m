@@ -8,6 +8,8 @@
 
 #import "FlibtyAppDelegate.h"
 #import "TabbedLogTargetFactory.h"
+#import "LogContainer.h"
+#import "Log.h"
 
 @implementation FlibtyAppDelegate
 
@@ -15,42 +17,31 @@
 @synthesize server;
 
 -(void)applicationDidFinishLaunching:(NSNotification*)aNotification {
-    window.title = @"Flibty";
+    NSRect windowRect = ((NSView*)window.contentView).frame; // NSRectFromCGRect(CGRectMake(0, 0, window.frame.size.width, window.frame.size.height));
+    logContainer = [[LogContainer alloc] initWithFrame:windowRect];
+    server = [[FlibtyServer alloc] initWith:[[TabbedLogTargetFactory alloc] initWith:logContainer]];
 
-    /*
-    NGColoredViewController *vc1 = [[NGColoredViewController alloc] initWithNibName:nil bundle:nil];
-    NGColoredViewController *vc2 = [[NGColoredViewController alloc] initWithNibName:nil bundle:nil];
-    NGColoredViewController *vc3 = [[NGColoredViewController alloc] initWithNibName:nil bundle:nil];
-    NGColoredViewController *vc4 = [[NGColoredViewController alloc] initWithNibName:nil bundle:nil];
-    NGColoredViewController *vc5 = [[NGColoredViewController alloc] initWithNibName:nil bundle:nil];
-
-    vc1.ng_tabBarItem = [NGTabBarItem itemWithTitle:@"Home" image:image1];
-    vc2.ng_tabBarItem = [NGTabBarItem itemWithTitle:@"Images" image:image2];
-    vc3.ng_tabBarItem = [NGTabBarItem itemWithTitle:@"Live" image:image3];
-    vc4.ng_tabBarItem = [NGTabBarItem itemWithTitle:@"Contact" image:image4];
-    vc5.ng_tabBarItem = [NGTabBarItem itemWithTitle:@"Settings" image:image5];
-
-    NSArray *viewController = [NSArray arrayWithObjects:vc1,vc2,vc3,vc4,vc5,nil];
-
-    NGTabBarController *tabBarController = [[NGTestTabBarController alloc] initWithDelegate:self];
-
-    tabBarController.animation = NGTabBarControllerAnimationMoveAndScale;
-    tabBarController.layoutStrategy = $isPhone() ? NGTabBarLayoutStrategyEvenlyDistributed : NGTabBarLayoutStrategyCentered;
-    tabBarController.itemPadding = 10.f;
-    tabBarController.showsItemHighlight = NO;
-    tabBarController.tintColor = [UIColor redColor];
-    tabBarController.viewControllers = viewController;
-    self.window.rootViewController = tabBarController;
-    */
-
-    server = [[FlibtyServer alloc] initWith:[[TabbedLogTargetFactory alloc] init]];
+    [window.contentView addSubview:logContainer.view];
+    NSView* winView = window.contentView;
+    winView.autoresizesSubviews = YES;
+    
     [server start:@"localhost" port:4444];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(onViewResize:)
+     name:NSViewFrameDidChangeNotification
+     object:winView];
 }
 
 -(void)applicationWillTerminate:(NSNotification*)notification {
     if (nil != server && server.isRunning) {
         [server stop];
     }
+}
+
+-(void)onViewResize:(NSNotification*)notification {
+    logContainer.view.frame = ((NSView*)window.contentView).frame;
 }
 
 @end

@@ -23,8 +23,15 @@
 
 @implementation TabbedLogTargetFactory
 
+-(id)initWith:(LogContainer*)container {
+    if ((self = [super init])) {
+        logContainer = container;
+    }
+    return self;
+}
+
 -(id<LogTarget>)newLogTarget {
-    return [[TabbedLogTarget alloc] init];
+    return [[TabbedLogTarget alloc] initWith:logContainer];
 }
 
 

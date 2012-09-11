@@ -83,7 +83,7 @@ const NSString* const POLICY_FILE = @""
                             NSLog(@"Is Policy File Request... Sending Data");
                             [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
                         } else {
-                            [logTarget log:log.level message:log.message];
+                            [logTarget log:log];
                             [socket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:LOG_TAG];
                         }
                     } else {

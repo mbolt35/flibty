@@ -50,23 +50,27 @@
                 NSString* elementName = xml.elementName;
                 BOOL isMultiLine = [elementName rangeOfString:@"showFoldMessage"].location != NSNotFound;
 
+                NSString* title;
                 NSString* message;
+                
                 if (isMultiLine) {
-                    id title = [xml elementByName:@"title"];
+                    id nodeTitle = [xml elementByName:@"title"];
                     id nodeMessage = [xml elementByName:@"message"];
 
-                    if (![title isKindOfClass:[XML class]] || ![nodeMessage isKindOfClass:[XML class]]) {
+                    if (![nodeTitle isKindOfClass:[XML class]] || ![nodeMessage isKindOfClass:[XML class]]) {
                         callback(nil);
                         return;
                     }
 
-                    message = [NSString stringWithFormat:@"%@\n%@", ((XML*)title).nodeValue, ((XML*)nodeMessage).nodeValue];
-                } else {
-                    message = xml.nodeValue;
+                    title = ((XML*)nodeTitle).nodeValue;
+                    message = ((XML*)nodeMessage).nodeValue;
+                    
+                    callback([[Log alloc] initWith:level andTitle:title andMessage:message]);
+                    return;
                 }
-
-
-                callback([[Log alloc] initWith:level andMessage:message isMultipleLines:isMultiLine]);
+                
+                message = xml.nodeValue;
+                callback([[Log alloc] initWith:level andMessage:message]);
             }
         }];
     }

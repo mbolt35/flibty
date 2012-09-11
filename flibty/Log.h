@@ -19,22 +19,26 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface Log : NSObject {
     NSString* level;
+    NSString* title;
     NSString* message;
+    
+    NSString* label;
 
     BOOL isMultiLine;
     BOOL isPolicyFileRequest;
 }
 
 -(id)initAsPolicyFileRequest;
-
 -(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage;
--(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage isMultipleLines:(BOOL)multiLine;
+-(id)initWith:(NSString*)logLevel andTitle:(NSString*)logTitle andMessage:(NSString*)logMessage;
 
 @property(readonly, nonatomic) NSString* level;
 @property(readonly, nonatomic) NSString* message;
+@property(readonly, nonatomic) NSString* title;
+@property(readonly, nonatomic) NSString* label;
 @property(readonly, nonatomic) BOOL isMultiLine;
 @property(readonly, nonatomic) BOOL isPolicyFileRequest;
+
 @end

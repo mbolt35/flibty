@@ -23,11 +23,13 @@
 
 @synthesize level;
 @synthesize message;
+@synthesize title;
+@synthesize label;
 @synthesize isMultiLine;
 @synthesize isPolicyFileRequest;
 
 -(id)initAsPolicyFileRequest {
-    self = [self initWith:@"" andMessage:@"" isMultipleLines:NO];
+    self = [self initWith:@"" andMessage:@""];
 
     if (self) {
         isPolicyFileRequest = YES;
@@ -37,19 +39,33 @@
 }
 
 -(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage {
-    return [self initWith:logLevel andMessage:logMessage isMultipleLines:NO];
+    self = [self initWith:logLevel andTitle:nil andMessage:logMessage];
+
+    if (self) {
+        isMultiLine = NO;
+    }
+
+    return self;
 }
 
--(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage isMultipleLines:(BOOL)multiLine {
+-(id)initWith:(NSString *)logLevel andTitle:(NSString *)logTitle andMessage:(NSString *)logMessage {
     self = [super init];
 
     if (self) {
         level = logLevel;
+        title = logTitle;
         message = logMessage;
-        isMultiLine = multiLine;
+        
+        isMultiLine = title != nil;
         isPolicyFileRequest = NO;
+        
+        if (isMultiLine) {
+            label = [NSString stringWithFormat:@"[%@]: %@", level, title];
+        } else {
+            label = [NSString stringWithFormat:@"[%@]: %@", level, message];
+        }
     }
-
+    
     return self;
 }
 

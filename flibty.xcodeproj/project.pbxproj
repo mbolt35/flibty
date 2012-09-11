@@ -12,10 +12,12 @@
 		129F92A5B5FE7B83200D48DA /* TabbedLogTargetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */; };
 		129F9378547C2388AF24C8A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4936AA15E195C60003DAB1 /* Security.framework */; };
 		129F95D4BE481C6458E79422 /* TabbedLogTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F90EE3F9D9859EE462B3D /* TabbedLogTarget.m */; };
+		129F9603A22AE1C26E0F7256 /* LogContainer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F95CDEB3368777BFEE3A8 /* LogContainer.h */; };
 		129F987384621A290787BAE5 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9D2D50CCDE77F58E720B /* Log.m */; };
 		129F98F7DC61E600EE043935 /* LogParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F9A960855E49E0F931449 /* LogParser.h */; };
 		129F9DA3331281DE06BEB3E1 /* FlibtyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F904DDAEE790B5C6C3E4B /* FlibtyHelper.m */; };
 		129F9E8448EF08E746A3673C /* SOSLogParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F9D6208E40F188A298B13 /* SOSLogParser.h */; };
+		129F9EAFF7AAD3A513DAE6D8 /* LogContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9F09616B318B26B937C5 /* LogContainer.m */; };
 		129F9F10642223C20D11D52B /* FlibtyConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9CEC79518C7329A376C7 /* FlibtyConnection.m */; };
 		9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
 		9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367215E0A2350003DAB1 /* InfoPlist.strings */; };
@@ -40,6 +42,8 @@
 		9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
 		9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
 		9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
+		9F59524C15FD927400EDC44E /* LogDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59524B15FD927400EDC44E /* LogDataSource.m */; };
+		9F71CF5F15F4722E00020C24 /* LogContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F71CF5E15F4722E00020C24 /* LogContainer.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9FBF9DE115F32A3500A52639 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				129F9603A22AE1C26E0F7256 /* LogContainer.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +88,7 @@
 		129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbedLogTargetFactory.m; sourceTree = "<group>"; };
 		129F93462FCDA1B7329B7297 /* FlibtyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyConnection.h; sourceTree = "<group>"; };
 		129F9445D5FFE430C604B481 /* LogTargetFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTargetFactory.h; sourceTree = "<group>"; };
+		129F95CDEB3368777BFEE3A8 /* LogContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogContainer.h; sourceTree = "<group>"; };
 		129F97A14E2D76F8CC912A8D /* FlibtyConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlibtyConnectionDelegate.h; sourceTree = "<group>"; };
 		129F97B6724370C268482330 /* TabbedLogTargetFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbedLogTargetFactory.h; sourceTree = "<group>"; };
 		129F98343F0DC04A71AB1EF5 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 		129F9D2D50CCDE77F58E720B /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
 		129F9D6208E40F188A298B13 /* SOSLogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSLogParser.h; sourceTree = "<group>"; };
 		129F9E9795DE5A15543DA9BC /* SOSLogParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSLogParser.m; sourceTree = "<group>"; };
+		129F9F09616B318B26B937C5 /* LogContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogContainer.m; sourceTree = "<group>"; };
 		9F49366515E0A2350003DAB1 /* flibty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flibty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F49366915E0A2350003DAB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9F49366C15E0A2350003DAB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,6 +135,9 @@
 		9F4936BC15E2935A0003DAB1 /* XMLLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoaderDelegate.h; sourceTree = "<group>"; };
 		9F4936BD15E2935A0003DAB1 /* XMLLoadWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLLoadWatcher.h; sourceTree = "<group>"; };
 		9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLLoadWatcher.m; sourceTree = "<group>"; };
+		9F59524A15FD927400EDC44E /* LogDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogDataSource.h; sourceTree = "<group>"; };
+		9F59524B15FD927400EDC44E /* LogDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogDataSource.m; sourceTree = "<group>"; };
+		9F71CF5E15F4722E00020C24 /* LogContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogContainer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,12 +165,24 @@
 		129F95FAE018880544361E57 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				129F9667A12A31C4F83722AC /* container */,
 				129F97B6724370C268482330 /* TabbedLogTargetFactory.h */,
 				129F92FB37E12BF6DF4E7B70 /* TabbedLogTargetFactory.m */,
 				129F90DA597C88DAADA839CE /* TabbedLogTarget.h */,
 				129F90EE3F9D9859EE462B3D /* TabbedLogTarget.m */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		129F9667A12A31C4F83722AC /* container */ = {
+			isa = PBXGroup;
+			children = (
+				129F95CDEB3368777BFEE3A8 /* LogContainer.h */,
+				129F9F09616B318B26B937C5 /* LogContainer.m */,
+				9F59524A15FD927400EDC44E /* LogDataSource.h */,
+				9F59524B15FD927400EDC44E /* LogDataSource.m */,
+			);
+			path = container;
 			sourceTree = "<group>";
 		};
 		129F97E4E4711F8EBFB2FEC1 /* parsers */ = {
@@ -206,15 +237,16 @@
 		9F49366F15E0A2350003DAB1 /* flibty */ = {
 			isa = PBXGroup;
 			children = (
+				9F49367015E0A2350003DAB1 /* Supporting Files */,
 				9F4936B515E293420003DAB1 /* xml */,
 				9F4936A415E188E40003DAB1 /* log */,
 				9F49369D15E174610003DAB1 /* net */,
-				9F49367B15E0A2350003DAB1 /* FlibtyAppDelegate.h */,
-				9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */,
-				9F49367E15E0A2350003DAB1 /* MainMenu.xib */,
-				9F49367015E0A2350003DAB1 /* Supporting Files */,
 				129F95FAE018880544361E57 /* ui */,
 				129F97E4E4711F8EBFB2FEC1 /* parsers */,
+				9F71CF5E15F4722E00020C24 /* LogContainer.xib */,
+				9F49367E15E0A2350003DAB1 /* MainMenu.xib */,
+				9F49367B15E0A2350003DAB1 /* FlibtyAppDelegate.h */,
+				9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */,
 			);
 			path = flibty;
 			sourceTree = "<group>";
@@ -303,6 +335,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F49369715E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibty" */;
 			buildPhases = (
+				9FBF9DE115F32A3500A52639 /* CopyFiles */,
 				9F17176715EB3386006466A0 /* CopyFiles */,
 				9F49366115E0A2350003DAB1 /* Sources */,
 				9F49366215E0A2350003DAB1 /* Frameworks */,
@@ -372,6 +405,7 @@
 				9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */,
 				9F49367A15E0A2350003DAB1 /* Credits.rtf in Resources */,
 				9F49368015E0A2350003DAB1 /* MainMenu.xib in Resources */,
+				9F71CF5F15F4722E00020C24 /* LogContainer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +455,8 @@
 				129F92A5B5FE7B83200D48DA /* TabbedLogTargetFactory.m in Sources */,
 				129F987384621A290787BAE5 /* Log.m in Sources */,
 				129F9183C4FBA0F1ADAB305C /* SOSLogParser.m in Sources */,
+				129F9EAFF7AAD3A513DAE6D8 /* LogContainer.m in Sources */,
+				9F59524C15FD927400EDC44E /* LogDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +544,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -529,7 +565,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "";
 			};
 			name = Release;
 		};
@@ -543,6 +580,8 @@
 					"\"${PROJECT_DIR}/../../../Downloads\"/**",
 					"\"${PROJECT_DIR}/../../../Desktop\"/**",
 					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
@@ -567,6 +606,8 @@
 					"\"${PROJECT_DIR}/../../../Downloads\"/**",
 					"\"${PROJECT_DIR}/../../../Desktop\"/**",
 					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"${PROJECT_DIR}/../../../Desktop\"/**",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";

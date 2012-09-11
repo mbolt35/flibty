@@ -9,11 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import "FlibtyServer.h"
 
+@class LogContainer;
+
 @interface FlibtyAppDelegate : NSObject <NSApplicationDelegate> {
     FlibtyServer* server;
+    LogContainer* logContainer;
 }
 
 @property(assign) IBOutlet NSWindow* window;
+@property(readonly, nonatomic) LogContainer* logContainer;
 @property(readonly, nonatomic) FlibtyServer* server;
 
 @end
