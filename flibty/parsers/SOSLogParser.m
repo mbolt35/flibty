@@ -33,29 +33,29 @@
         return;
     }
 
-    if ([msg rangeOfString:@"policy-file-request"].location != NSNotFound) {
+    if ([msg rangeOfString:POLICY_REQUEST].location != NSNotFound) {
         NSLog(@"Policy file requested, serving.");
         callback([[Log alloc] initAsPolicyFileRequest]);
         return;
     }
 
-    NSRange range = [msg rangeOfString:@"!SOS"];
+    NSRange range = [msg rangeOfString:SOS];
 
     if (range.location != NSNotFound) {
         NSString* xmlString = [msg substringFromIndex:range.location + range.length];
 
         [XML loadXmlString:xmlString onLoadComplete:^(XML* xml) {
             @autoreleasepool {
-                NSString* level = [xml attributeByName:@"key"];
+                NSString* level = [xml attributeByName:KEY];
                 NSString* elementName = xml.elementName;
-                BOOL isMultiLine = [elementName rangeOfString:@"showFoldMessage"].location != NSNotFound;
+                BOOL isMultiLine = [elementName rangeOfString:FOLDED].location != NSNotFound;
 
                 NSString* title;
                 NSString* message;
                 
                 if (isMultiLine) {
-                    id nodeTitle = [xml elementByName:@"title"];
-                    id nodeMessage = [xml elementByName:@"message"];
+                    id nodeTitle = [xml elementByName:TITLE];
+                    id nodeMessage = [xml elementByName:MESSAGE];
 
                     if (![nodeTitle isKindOfClass:[XML class]] || ![nodeMessage isKindOfClass:[XML class]]) {
                         callback(nil);

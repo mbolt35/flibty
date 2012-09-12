@@ -20,6 +20,15 @@
 #import <Foundation/Foundation.h>
 #import "LogParser.h"
 
+// Use defines instead of constants, as rangeOfString doesn't accept const NSString*
+// Cloning the constant would be similar to using #define, except more difficult to read.
+#define SOS @"!SOS"
+#define POLICY_REQUEST @"policy-file-request"
+#define KEY @"key"
+#define FOLDED @"showFoldMessage"
+#define TITLE @"title"
+#define MESSAGE @"message"
+
 
 @interface SOSLogParser : NSObject<LogParser> {
 
