@@ -19,42 +19,25 @@
 		129F9E8448EF08E746A3673C /* SOSLogParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 129F9D6208E40F188A298B13 /* SOSLogParser.h */; };
 		129F9EAFF7AAD3A513DAE6D8 /* LogContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9F09616B318B26B937C5 /* LogContainer.m */; };
 		129F9F10642223C20D11D52B /* FlibtyConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 129F9CEC79518C7329A376C7 /* FlibtyConnection.m */; };
+		9F144D881602D1E600D66F8E /* TabbedLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F144D871602D1E600D66F8E /* TabbedLogView.xib */; };
+		9F144D9116043EDD00D66F8E /* PSMTabBarControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F144D9016043EDD00D66F8E /* PSMTabBarControl.framework */; };
+		9F144D9216043F6D00D66F8E /* PSMTabBarControl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F144D9016043EDD00D66F8E /* PSMTabBarControl.framework */; };
 		9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
 		9F49367415E0A2350003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367215E0A2350003DAB1 /* InfoPlist.strings */; };
 		9F49367615E0A2350003DAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49367515E0A2350003DAB1 /* main.m */; };
 		9F49367A15E0A2350003DAB1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367815E0A2350003DAB1 /* Credits.rtf */; };
 		9F49367D15E0A2350003DAB1 /* FlibtyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */; };
 		9F49368015E0A2350003DAB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F49367E15E0A2350003DAB1 /* MainMenu.xib */; };
-		9F49368815E0A2360003DAB1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49368715E0A2360003DAB1 /* SenTestingKit.framework */; };
-		9F49368915E0A2360003DAB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F49366915E0A2350003DAB1 /* Cocoa.framework */; };
-		9F49369115E0A2360003DAB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F49368F15E0A2360003DAB1 /* InfoPlist.strings */; };
-		9F49369415E0A2360003DAB1 /* flibtyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369315E0A2360003DAB1 /* flibtyTests.m */; };
-		9F4936A215E175110003DAB1 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */; };
-		9F4936A315E175110003DAB1 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */; };
 		9F4936A715E1891D0003DAB1 /* FlibtyServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A615E1891D0003DAB1 /* FlibtyServer.m */; };
 		9F4936AE15E196440003DAB1 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */; };
 		9F4936B015E196440003DAB1 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936A115E175110003DAB1 /* GCDAsyncUdpSocket.m */; };
 		9F4936BF15E2935A0003DAB1 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B715E2935A0003DAB1 /* StringUtil.m */; };
-		9F4936C015E2935A0003DAB1 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B715E2935A0003DAB1 /* StringUtil.m */; };
 		9F4936C115E2935A0003DAB1 /* XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B915E2935A0003DAB1 /* XML.m */; };
-		9F4936C215E2935A0003DAB1 /* XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936B915E2935A0003DAB1 /* XML.m */; };
 		9F4936C315E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
-		9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BB15E2935A0003DAB1 /* XMLLoader.m */; };
 		9F4936C515E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
-		9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4936BE15E2935A0003DAB1 /* XMLLoadWatcher.m */; };
 		9F59524C15FD927400EDC44E /* LogDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59524B15FD927400EDC44E /* LogDataSource.m */; };
 		9F71CF5F15F4722E00020C24 /* LogContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F71CF5E15F4722E00020C24 /* LogContainer.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9F49368A15E0A2360003DAB1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F49365C15E0A2350003DAB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F49366415E0A2350003DAB1;
-			remoteInfo = flibty;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9F17176715EB3386006466A0 /* CopyFiles */ = {
@@ -63,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9F144D9216043F6D00D66F8E /* PSMTabBarControl.framework in CopyFiles */,
 				129F98F7DC61E600EE043935 /* LogParser.h in CopyFiles */,
 				129F928613486D0B36A148EC /* Log.h in CopyFiles */,
 				129F9E8448EF08E746A3673C /* SOSLogParser.h in CopyFiles */,
@@ -100,6 +84,8 @@
 		129F9D6208E40F188A298B13 /* SOSLogParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSLogParser.h; sourceTree = "<group>"; };
 		129F9E9795DE5A15543DA9BC /* SOSLogParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSLogParser.m; sourceTree = "<group>"; };
 		129F9F09616B318B26B937C5 /* LogContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogContainer.m; sourceTree = "<group>"; };
+		9F144D871602D1E600D66F8E /* TabbedLogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbedLogView.xib; sourceTree = "<group>"; };
+		9F144D9016043EDD00D66F8E /* PSMTabBarControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PSMTabBarControl.framework; sourceTree = "<group>"; };
 		9F49366515E0A2350003DAB1 /* flibty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flibty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F49366915E0A2350003DAB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9F49366C15E0A2350003DAB1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -113,12 +99,7 @@
 		9F49367B15E0A2350003DAB1 /* FlibtyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlibtyAppDelegate.h; sourceTree = "<group>"; };
 		9F49367C15E0A2350003DAB1 /* FlibtyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlibtyAppDelegate.m; sourceTree = "<group>"; };
 		9F49367F15E0A2350003DAB1 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = ../en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9F49368615E0A2360003DAB1 /* flibtyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = flibtyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F49368715E0A2360003DAB1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9F49368E15E0A2360003DAB1 /* flibtyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "flibtyTests-Info.plist"; sourceTree = "<group>"; };
-		9F49369015E0A2360003DAB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9F49369215E0A2360003DAB1 /* flibtyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = flibtyTests.h; sourceTree = "<group>"; };
-		9F49369315E0A2360003DAB1 /* flibtyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = flibtyTests.m; sourceTree = "<group>"; };
 		9F49369E15E175110003DAB1 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		9F49369F15E175110003DAB1 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		9F4936A015E175110003DAB1 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -147,15 +128,7 @@
 			files = (
 				9F49366A15E0A2350003DAB1 /* Cocoa.framework in Frameworks */,
 				129F9378547C2388AF24C8A6 /* Security.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F49368215E0A2360003DAB1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F49368815E0A2360003DAB1 /* SenTestingKit.framework in Frameworks */,
-				9F49368915E0A2360003DAB1 /* Cocoa.framework in Frameworks */,
+				9F144D9116043EDD00D66F8E /* PSMTabBarControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +157,7 @@
 		129F9562CA4B5BFE28206684 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F144D871602D1E600D66F8E /* TabbedLogView.xib */,
 				9F49367E15E0A2350003DAB1 /* MainMenu.xib */,
 				9F71CF5E15F4722E00020C24 /* LogContainer.xib */,
 				9F49367715E0A2350003DAB1 /* flibty-Prefix.pch */,
@@ -257,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				9F49366F15E0A2350003DAB1 /* flibty */,
-				9F49368C15E0A2360003DAB1 /* flibtyTests */,
 				9F49366815E0A2350003DAB1 /* Frameworks */,
 				9F49366615E0A2350003DAB1 /* Products */,
 			);
@@ -267,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				9F49366515E0A2350003DAB1 /* flibty.app */,
-				9F49368615E0A2360003DAB1 /* flibtyTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +247,7 @@
 		9F49366815E0A2350003DAB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F144D9016043EDD00D66F8E /* PSMTabBarControl.framework */,
 				9F4936AA15E195C60003DAB1 /* Security.framework */,
 				9F49366915E0A2350003DAB1 /* Cocoa.framework */,
 				9F49368715E0A2360003DAB1 /* SenTestingKit.framework */,
@@ -309,25 +282,6 @@
 			path = flibty;
 			sourceTree = "<group>";
 		};
-		9F49368C15E0A2360003DAB1 /* flibtyTests */ = {
-			isa = PBXGroup;
-			children = (
-				9F49369215E0A2360003DAB1 /* flibtyTests.h */,
-				9F49369315E0A2360003DAB1 /* flibtyTests.m */,
-				9F49368D15E0A2360003DAB1 /* Supporting Files */,
-			);
-			path = flibtyTests;
-			sourceTree = "<group>";
-		};
-		9F49368D15E0A2360003DAB1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9F49368E15E0A2360003DAB1 /* flibtyTests-Info.plist */,
-				9F49368F15E0A2360003DAB1 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -349,25 +303,6 @@
 			productName = flibty;
 			productReference = 9F49366515E0A2350003DAB1 /* flibty.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9F49368515E0A2360003DAB1 /* flibtyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F49369A15E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibtyTests" */;
-			buildPhases = (
-				9F49368115E0A2360003DAB1 /* Sources */,
-				9F49368215E0A2360003DAB1 /* Frameworks */,
-				9F49368315E0A2360003DAB1 /* Resources */,
-				9F49368415E0A2360003DAB1 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F49368B15E0A2360003DAB1 /* PBXTargetDependency */,
-			);
-			name = flibtyTests;
-			productName = flibtyTests;
-			productReference = 9F49368615E0A2360003DAB1 /* flibtyTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -392,7 +327,6 @@
 			projectRoot = "";
 			targets = (
 				9F49366415E0A2350003DAB1 /* flibty */,
-				9F49368515E0A2360003DAB1 /* flibtyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -406,34 +340,11 @@
 				9F49367A15E0A2350003DAB1 /* Credits.rtf in Resources */,
 				9F49368015E0A2350003DAB1 /* MainMenu.xib in Resources */,
 				9F71CF5F15F4722E00020C24 /* LogContainer.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F49368315E0A2360003DAB1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F49369115E0A2360003DAB1 /* InfoPlist.strings in Resources */,
+				9F144D881602D1E600D66F8E /* TabbedLogView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9F49368415E0A2360003DAB1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F49366115E0A2350003DAB1 /* Sources */ = {
@@ -460,29 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F49368115E0A2360003DAB1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F49369415E0A2360003DAB1 /* flibtyTests.m in Sources */,
-				9F4936A215E175110003DAB1 /* GCDAsyncSocket.m in Sources */,
-				9F4936A315E175110003DAB1 /* GCDAsyncUdpSocket.m in Sources */,
-				9F4936C015E2935A0003DAB1 /* StringUtil.m in Sources */,
-				9F4936C215E2935A0003DAB1 /* XML.m in Sources */,
-				9F4936C415E2935A0003DAB1 /* XMLLoader.m in Sources */,
-				9F4936C615E2935A0003DAB1 /* XMLLoadWatcher.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9F49368B15E0A2360003DAB1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F49366415E0A2350003DAB1 /* flibty */;
-			targetProxy = 9F49368A15E0A2360003DAB1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9F49367215E0A2350003DAB1 /* InfoPlist.strings */ = {
@@ -507,14 +396,6 @@
 				9F49367F15E0A2350003DAB1 /* MainMenu.xib */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		9F49368F15E0A2360003DAB1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F49369015E0A2360003DAB1 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -624,36 +505,6 @@
 			};
 			name = Release;
 		};
-		9F49369B15E0A2360003DAB1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/flibty.app/Contents/MacOS/flibty";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
-				INFOPLIST_FILE = "flibtyTests/flibtyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		9F49369C15E0A2360003DAB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/flibty.app/Contents/MacOS/flibty";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "flibty/flibty-Prefix.pch";
-				INFOPLIST_FILE = "flibtyTests/flibtyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -671,15 +522,6 @@
 			buildConfigurations = (
 				9F49369815E0A2360003DAB1 /* Debug */,
 				9F49369915E0A2360003DAB1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F49369A15E0A2360003DAB1 /* Build configuration list for PBXNativeTarget "flibtyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F49369B15E0A2360003DAB1 /* Debug */,
-				9F49369C15E0A2360003DAB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

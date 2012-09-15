@@ -22,7 +22,8 @@
 @protocol LogTargetFactory <NSObject>
 
 @required
--(id<LogTarget>)newLogTarget;
+-(id<LogTarget>)newLogTarget:(NSString*)withName;
+-(void)close:(NSString*)logName;
 
 @optional
 

@@ -34,6 +34,4 @@
 
 }
 
--(void)parse:(NSData*)data andCallback:(LogParseCallback)callback;
-
 @end

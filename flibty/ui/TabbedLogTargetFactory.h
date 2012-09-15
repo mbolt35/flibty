@@ -23,8 +23,11 @@
 
 @interface TabbedLogTargetFactory : NSObject<LogTargetFactory> {
     LogContainer* logContainer;
+    NSTabView* tabView;
+    NSMutableDictionary* tabTargets;
 }
 
+-(id)initWithTabs:(NSTabView*)tabs;
 -(id)initWith:(LogContainer*)container;
 
 @end

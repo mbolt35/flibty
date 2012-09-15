@@ -30,8 +30,38 @@
     return self;
 }
 
--(id<LogTarget>)newLogTarget {
-    return [[TabbedLogTarget alloc] initWith:logContainer];
+-(id)initWithTabs:(NSTabView*)tabs {
+    if ((self = [super init])) {
+        tabView = tabs;
+        tabTargets = [[NSMutableDictionary alloc] initWithCapacity:1];
+    }
+    return self;
+}
+
+-(id<LogTarget>)newLogTarget:(NSString*)withName {
+    LogContainer* container = [[LogContainer alloc] initWithFrame:tabView.frame];
+    TabbedLogTarget* target = [[TabbedLogTarget alloc] initWith:container];
+    
+    NSTabViewItem* item = [[NSTabViewItem alloc] init];
+    item.view = target.view;
+    item.label = withName;
+
+    [tabTargets setObject:@{ @"container" : container, @"item" : item } forKey:withName];
+    
+    [tabView addTabViewItem:item];
+    
+    return target;
+}
+
+-(void)close:(NSString*)logName {
+    NSDictionary* value = [tabTargets objectForKey:logName];
+    LogContainer* container = value[@"container"];
+    NSTabViewItem* item = value[@"item"];
+    
+    [tabView removeTabViewItem:item];
+    [container close];
+    
+    [tabTargets removeObjectForKey:logName];
 }
 
 

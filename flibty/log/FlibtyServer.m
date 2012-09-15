@@ -90,9 +90,9 @@
 
 -(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
     FlibtyConnection* connection = [[FlibtyConnection alloc]
-            initWith:newSocket
-            andLogTarget:[logFactory newLogTarget]
-            parsedWith:[[SOSLogParser alloc] init]];
+        initWith:newSocket
+        andLogTarget:[logFactory newLogTarget:[FlibtyHelper keyFor:newSocket]]
+        parsedWith:[[SOSLogParser alloc] init]];
 
     connection.delegate = self;
 
@@ -109,6 +109,8 @@
 
 -(void)socketDisconnected:(FlibtyConnection*)connection {
     [connectedSockets removeObjectForKey:connection.key];
+    [logFactory close:connection.key];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             NSLog(@"Removed client connection for key: %@ - %lu connections remaining.", connection.key, connectedSockets.count);

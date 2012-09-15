@@ -24,16 +24,42 @@
 @implementation TabbedLogTarget
 
 
--(id)initWith:(LogContainer *)container {
-    if ((self = [super init])) {
+-(id)initWith:(LogContainer*)container {
+    self = [super initWithNibName:@"TabbedLogView" bundle:[NSBundle mainBundle]];
+    if (self) {
         logContainer = container;
+        self.view.autoresizesSubviews = YES;
+        [self.view addSubview:logContainer.view];
+        
+        logContainer.view.frame = self.view.frame;
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(onViewResize:)
+         name:NSViewFrameDidChangeNotification
+         object:self.view];
     }
     return self;
 }
 
 -(void)log:(Log*)log {
-    //NSLog(@"[%@] %@", log.level, log.message);
     [logContainer addLog:log];
+}
+
+-(void)close {
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:NSViewFrameDidChangeNotification
+     object:self.view];
+    
+    [logContainer close];
+}
+
+-(void)onViewResize:(NSNotification*)notification {
+    NSRect r = self.view.frame;
+    NSRect newRect = NSMakeRect(0, 0, r.size.width, r.size.height);
+    
+    logContainer.view.frame = newRect;
 }
 
 @end

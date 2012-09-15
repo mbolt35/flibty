@@ -103,7 +103,7 @@ const NSString* const POLICY_FILE = @""
                 NSLog(@"client disconnected, error: %@", err);
             }
         });
-
+        
         if (delegate && [delegate respondsToSelector:@selector(socketDisconnected:)]) {
             [delegate socketDisconnected:self];
         }

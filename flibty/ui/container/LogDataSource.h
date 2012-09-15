@@ -14,6 +14,5 @@
 }
 
 -(void)add:(Log*)log;
--(NSUInteger)indexOfObject:(Log*)log;
 
 @end

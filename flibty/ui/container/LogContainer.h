@@ -28,6 +28,7 @@
 
 -(id)initWithFrame:(NSRect)rect;
 -(void)addLog:(Log*)log;
+-(void)close;
 
 @property(assign) IBOutlet NSOutlineView* outlineView;
 

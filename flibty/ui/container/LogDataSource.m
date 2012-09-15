@@ -1,3 +1,4 @@
+
 //
 //  LogDataSource.m
 //  flibty
@@ -6,6 +7,7 @@
 //  Copyright (c) 2012 Matt Bolt. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "LogDataSource.h"
 
 @implementation LogDataSource
@@ -20,10 +22,6 @@
 
 -(void)add:(Log*)log {
     [logEntries addObject:log];
-}
-
--(NSUInteger)indexOfObject:(Log*)log {
-    return [logEntries indexOfObject:log];
 }
 
 -(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
@@ -43,7 +41,7 @@
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     // this is the root, so we return the log at the index
     if (nil == item) {
-        return [logEntries objectAtIndex:index];
+        return logEntries[index];
     }
     
     // a log only has a child if it is multiline -- so just return the message.

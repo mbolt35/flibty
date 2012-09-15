@@ -21,6 +21,7 @@
 #import "FlibtyConnectionDelegate.h"
 #import "GCDAsyncSocket.h"
 #import "XML.h"
+#import "FlibtyHelper.h"
 
 @protocol LogTargetFactory;
 

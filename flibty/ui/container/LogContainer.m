@@ -17,6 +17,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <Cocoa/Cocoa.h>
 #import "LogContainer.h"
 
 @implementation LogContainer {
@@ -31,8 +32,11 @@
 
     if (self) {
         self.view.frame = rect;
+        self.view.focusRingType = NSFocusRingTypeNone;
+        
         dataSource = [[LogDataSource alloc] init];
         outlineView.dataSource = dataSource;
+        outlineView.focusRingType = NSFocusRingTypeNone;
         
         ((NSScrollView*)self.view).postsBoundsChangedNotifications = YES;
         [[NSNotificationCenter defaultCenter]
@@ -87,6 +91,15 @@
     CGFloat heightValue = [textCell cellSizeForBounds:CGRectMake(0, 0, self.outlineView.frame.size.width, CGFLOAT_MAX)].height;
 
     return heightValue;
+}
+
+-(void)close {
+    ((NSScrollView*)self.view).postsBoundsChangedNotifications = NO;
+    
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:NSViewBoundsDidChangeNotification
+     object:((NSScrollView*)self.view).contentView];
 }
 
 

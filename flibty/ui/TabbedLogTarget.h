@@ -22,11 +22,13 @@
 #import "LogContainer.h"
 
 
-@interface TabbedLogTarget : NSObject<LogTarget> {
+@interface TabbedLogTarget : NSViewController<LogTarget> {
     LogContainer* logContainer;
 }
 
 -(id)initWith:(LogContainer*)container;
 -(void)log:(Log*)log;
+-(void)close;
+
 
 @end
