@@ -17,34 +17,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "LogTargetDelegate.h"
+#import <Foundation/Foundation.h>
 
-@protocol LogTargetDelegate;
-@class Log;
+@interface TabModel : NSObject {
+    BOOL isProcessing;
+    BOOL isEdited;
+    NSImage* icon;
+    NSImage* largeImage;
+    NSString* iconName;
+    NSInteger objectCount;
+    
+    NSString* name;
+}
 
+-(id)initWithName:(NSString*)modelName;
 
-/**
- * The LogTarget protocol represents an object that is capable of processing a Log
- * instance.
- */
-@protocol LogTarget <NSObject>
+@property(nonatomic, readonly) NSString* name;
+@property(nonatomic, readonly) NSImage* icon;
+@property(nonatomic, readonly) NSImage* largeImage;
+@property(nonatomic, readonly) NSString* iconName;
 
-/**
- * This method sends a Log instance to the LogTarget for processing.
- */
--(void)log:(Log*)log;
-
-/**
- * The LogTarget instance should always have an NSString identifier.
- */
-@property(readonly, nonatomic) NSString* name;
-
-
-@optional
-
-/**
- * A LogTarget can optionally delegate specific behavior to a LogTargetDelegate implementer.
- */
-@property(weak) id<LogTargetDelegate> delegate;
+@property(assign) BOOL isProcessing;
+@property(assign) BOOL isEdited;
+@property(assign) NSInteger objectCount;
 
 @end

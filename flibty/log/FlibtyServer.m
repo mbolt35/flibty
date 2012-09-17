@@ -19,12 +19,14 @@
 
 #import "FlibtyServer.h"
 #import "FlibtyConnection.h"
+#import "LogTarget.h"
 #import "LogTargetFactory.h"
 #import "SOSLogParser.h"
 
-@implementation FlibtyServer
+@implementation FlibtyServer {
+    NSMutableDictionary* attempts;
+}
 
-@synthesize socket;
 @synthesize logFactory;
 @synthesize isRunning;
 
@@ -33,6 +35,7 @@
         socketQueue = dispatch_queue_create("socketQueue", NULL);
         socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:socketQueue];
         connectedSockets = [[NSMutableDictionary alloc] initWithCapacity:1];
+        attempts = [[NSMutableDictionary alloc] initWithCapacity:1];
 
         isRunning = NO;
     }
@@ -78,10 +81,8 @@
 
     // Stop any client connections
     @synchronized (connectedSockets) {
-        NSUInteger i;
-        for (i = 0; i < connectedSockets.allKeys.count; ++i) {
-            NSString* socketKey = [connectedSockets.allKeys objectAtIndex:i];
-            [[connectedSockets objectForKey:socketKey] disconnect];
+        for (NSString* key in connectedSockets.allKeys) {
+            [connectedSockets[key] disconnect];
         }
     }
 
@@ -90,32 +91,57 @@
 
 -(void)socket:(GCDAsyncSocket*)sock didAcceptNewSocket:(GCDAsyncSocket*)newSocket {
     FlibtyConnection* connection = [[FlibtyConnection alloc]
-        initWith:newSocket
-        andLogTarget:[logFactory newLogTarget:[FlibtyHelper keyFor:newSocket]]
+        initWithDelegate:self
+        socket:newSocket
         parsedWith:[[SOSLogParser alloc] init]];
 
-    connection.delegate = self;
-
-    @synchronized (connectedSockets) {
-        [connectedSockets setValue:connection forKey:connection.key];
+    @synchronized(attempts) {
+        attempts[connection.key] = connection;
     }
+}
 
+-(void)socketDidConnect:(FlibtyConnection*)connection {
+    @synchronized (connectedSockets) {
+        connectedSockets[connection.key] = connection;
+    }
+    @synchronized (attempts) {
+        [attempts removeObjectForKey:connection.key];
+    }
+    
+    id<LogTarget> logTarget = [logFactory newLogTarget:connection.key];
+    if (logTarget && [logTarget respondsToSelector:@selector(setDelegate:)]) {
+        logTarget.delegate = self;
+    }
+    connection.logTarget = logTarget;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        @autoreleasepool {
-            NSLog(@"Accepted client: %@", connection.key);
-        }
+        NSLog(@"Accepted client: %@", connection.key);
     });
 }
 
 -(void)socketDisconnected:(FlibtyConnection*)connection {
+    // This is the behavior post policy file acceptance, or if the client never successfully
+    // sent a valid log.
+    @synchronized(attempts) {
+        if (attempts[connection.key]) {
+            [attempts removeObjectForKey:connection.key];
+            return;
+        }
+    }
+    
     [connectedSockets removeObjectForKey:connection.key];
-    [logFactory close:connection.key];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        @autoreleasepool {
-            NSLog(@"Removed client connection for key: %@ - %lu connections remaining.", connection.key, connectedSockets.count);
-        }
+        NSLog(@"Removed client connection for key: %@ - %lu connections remaining.", connection.key, connectedSockets.count);
     });
+}
+
+-(void)onTargetClosed:(id<LogTarget>)target {
+    NSLog(@"Disconnecting client: %@", target.name);
+    
+    if (connectedSockets[target.name]) {
+        [connectedSockets[target.name] disconnect];
+    }
 }
 
 /**

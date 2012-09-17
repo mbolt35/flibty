@@ -19,13 +19,14 @@
 
 #import <Foundation/Foundation.h>
 #import "FlibtyConnectionDelegate.h"
+#import "LogTargetDelegate.h"
 #import "GCDAsyncSocket.h"
 #import "XML.h"
 #import "FlibtyHelper.h"
 
 @protocol LogTargetFactory;
 
-@interface FlibtyServer : NSObject<FlibtyConnectionDelegate> {
+@interface FlibtyServer : NSObject<FlibtyConnectionDelegate, LogTargetDelegate> {
     GCDAsyncSocket* socket;
     NSMutableDictionary* connectedSockets;
     id<LogTargetFactory> logFactory;
@@ -34,20 +35,29 @@
     BOOL isRunning;
 }
 
+/**
+ * This method initializes the FlibtyServer using a LogTargetFactory implementation.
+ */
 -(id)initWith:(id<LogTargetFactory>)loggerFactory;
+
+/**
+ * This method starts the FlibtyServer on a specific host and port.
+ */
 -(void)start:(NSString*)host port:(int)port;
+
+/**
+ * This method disconnects all connected clients and shuts down the server.
+ */
 -(void)stop;
 
-@property(readonly, nonatomic) GCDAsyncSocket* socket;
+//@property(readonly, nonatomic) GCDAsyncSocket* socket;
 @property(readwrite, nonatomic) id<LogTargetFactory> logFactory;
 @property(readonly, nonatomic) BOOL isRunning;
 
 @end
 
-/**
- * @private
- * the private methods interface
- */
+
+// private category
 @interface FlibtyServer (private)
 -(BOOL)isBetween:(int)value min:(int)min max:(int)max;
 @end

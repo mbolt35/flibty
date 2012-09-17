@@ -17,34 +17,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "LogTargetDelegate.h"
+#import <Foundation/Foundation.h>
+#import "LogTarget.h"
 
-@protocol LogTargetDelegate;
-@class Log;
+@protocol LogTarget;
 
 
-/**
- * The LogTarget protocol represents an object that is capable of processing a Log
- * instance.
- */
-@protocol LogTarget <NSObject>
+@protocol LogTargetDelegate <NSObject>
 
 /**
- * This method sends a Log instance to the LogTarget for processing.
+ * This method is executed when the log target has closed off it's ability to accept 
+ * any further logging. 
  */
--(void)log:(Log*)log;
-
-/**
- * The LogTarget instance should always have an NSString identifier.
- */
-@property(readonly, nonatomic) NSString* name;
-
-
-@optional
-
-/**
- * A LogTarget can optionally delegate specific behavior to a LogTargetDelegate implementer.
- */
-@property(weak) id<LogTargetDelegate> delegate;
+-(void)onTargetClosed:(id<LogTarget>)target;
 
 @end

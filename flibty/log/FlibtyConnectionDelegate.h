@@ -21,12 +21,25 @@
 
 @protocol FlibtyConnectionDelegate <NSObject>
 
-@required
-// ...
+/**
+ * This method is executed when the FlibtyConnection establishes a reliable connection. This
+ * would occur after the policy-file has been written. 
+ */
+-(void)socketDidConnect:(FlibtyConnection*)connection;
+
+/**
+ * This method is executed when the FlibtyConnection is disconnected, either by the remote peer, or
+ * explicitly through the disconnect method.
+ */
+-(void)socketDisconnected:(FlibtyConnection*)connection;
+
 
 @optional
+
+/**
+ * Optionally, this method can be used to notify the use of the policy file.
+ */
 -(void)policyFileSent:(FlibtyConnection*)connection;
--(void)socketDisconnected:(FlibtyConnection*)connection;
 
 
 

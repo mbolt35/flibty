@@ -1,24 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  FlibtyAppDelegate.h
-//  flibty
+//  MATTBOLT.BLOGSPOT.COM
+//  Copyright(C) 2012 Matt Bolt
 //
-//  Created by Matt Bolt on 8/19/12.
-//  Copyright (c) 2012 Matt Bolt. All rights reserved.
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at:
 //
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+////////////////////////////////////////////////////////////////////////////////
 
 #import <Cocoa/Cocoa.h>
+#import <PSMTabBarControl/PSMTabBarControl.h>
 #import "FlibtyServer.h"
 
-//@class LogContainer;
-
-@interface FlibtyAppDelegate : NSObject <NSApplicationDelegate> {
+@interface FlibtyAppDelegate : NSObject<NSApplicationDelegate> {
     FlibtyServer* server;
-    //  LogContainer* logContainer;
+    
+    IBOutlet NSWindow* window;
+    IBOutlet NSTabView* tabView;
+    IBOutlet PSMTabBarControl* tabBarControl;
 }
-
-@property(assign) IBOutlet NSWindow* window;
-@property(assign) IBOutlet NSTabView* tabView;
-//@property(readonly, nonatomic) LogContainer* logContainer;
-@property(readonly, nonatomic) FlibtyServer* server;
 
 @end

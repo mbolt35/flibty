@@ -21,18 +21,20 @@
 
 @implementation Log
 
-@synthesize level;
-@synthesize message;
-@synthesize title;
-@synthesize label;
-@synthesize isMultiLine;
-@synthesize isPolicyFileRequest;
+// Synthesize all read-only properties to use backing variables.
+@synthesize level = _level;
+@synthesize message = _message;
+@synthesize title = _title;
+@synthesize label = _label;
+@synthesize isMultiLine = _isMultiLine;
+@synthesize isPolicyFileRequest = _isPolicyFileRequest;
+
 
 -(id)initAsPolicyFileRequest {
     self = [self initWith:@"" andMessage:@""];
 
     if (self) {
-        isPolicyFileRequest = YES;
+        _isPolicyFileRequest = YES;
     }
 
     return self;
@@ -42,7 +44,7 @@
     self = [self initWith:logLevel andTitle:nil andMessage:logMessage];
 
     if (self) {
-        isMultiLine = NO;
+        _isMultiLine = NO;
     }
 
     return self;
@@ -52,17 +54,17 @@
     self = [super init];
 
     if (self) {
-        level = logLevel;
-        title = logTitle;
-        message = logMessage;
+        _level = logLevel;
+        _title = logTitle;
+        _message = logMessage;
         
-        isMultiLine = title != nil;
-        isPolicyFileRequest = NO;
+        _isMultiLine = _title != nil;
+        _isPolicyFileRequest = NO;
         
-        if (isMultiLine) {
-            label = [NSString stringWithFormat:@"[%@]: %@", level, title];
+        if (_isMultiLine) {
+            _label = [NSString stringWithFormat:@"[%@]: %@", _level, _title];
         } else {
-            label = [NSString stringWithFormat:@"[%@]: %@", level, message];
+            _label = [NSString stringWithFormat:@"[%@]: %@", _level, _message];
         }
     }
     

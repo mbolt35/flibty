@@ -19,14 +19,23 @@
 
 @class Log;
 
+/**
+ * Define a block type to be used when parsing a Log instance.
+ */
 typedef void(^LogParseCallback)(Log* log);
 
+
+/**
+ * This protocol defines an object which can parse a Log instance from NSData. It's
+ * currently very specific to the Flibty implementation, but could easily be updated
+ * to accept a variety of input. 
+ */
 @protocol LogParser <NSObject>
 
-@required
+/**
+ * This method parses the NSData instance passed, and executes the callback, passing back
+ * the Log instance as the callback parameter. nil is passed back should the parsing fail.
+ */
 -(void)parse:(NSData*)data andCallback:(LogParseCallback)callback;
-
-
-@optional
 
 @end

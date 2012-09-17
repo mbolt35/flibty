@@ -19,26 +19,67 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * This class represents a Log instance, which exists as a policy-file-request, a 
+ * single-line log, or a multi-line log.
+ */
 @interface Log : NSObject {
-    NSString* level;
-    NSString* title;
-    NSString* message;
+    NSString* _level;
+    NSString* _title;
+    NSString* _message;
     
-    NSString* label;
+    NSString* _label;
 
-    BOOL isMultiLine;
-    BOOL isPolicyFileRequest;
+    BOOL _isMultiLine;
+    BOOL _isPolicyFileRequest;
 }
 
+/**
+ * This method initializes the Log instance as a policy-file-request.
+ */
 -(id)initAsPolicyFileRequest;
+
+/**
+ * This method initializes the Log instance as a single-lined log message.
+ */
 -(id)initWith:(NSString*)logLevel andMessage:(NSString*)logMessage;
+
+/**
+ * This method initializes the Log instance as a multi-line log message where the 
+ * visible line is the title, and the rest of the log message is in the message.
+ */
 -(id)initWith:(NSString*)logLevel andTitle:(NSString*)logTitle andMessage:(NSString*)logMessage;
 
+/**
+ * This property contains the logging level used for the Log. ie: INFO, DEBUG, etc...
+ */
 @property(readonly, nonatomic) NSString* level;
+
+/**
+ * This property is set to the full log on a single line Log, and "folded" message on
+ * a multi-line Log.
+ */
 @property(readonly, nonatomic) NSString* message;
+
+/**
+ * This property is set to the title of a multi-line log. That is, the non-folded single-line
+ * description of the full log.
+ */
 @property(readonly, nonatomic) NSString* title;
+
+/**
+ * This returns a NSString representing the full Log.
+ */
 @property(readonly, nonatomic) NSString* label;
+
+/**
+ * Whether or not this Log instance is multi-line or not.
+ */
 @property(readonly, nonatomic) BOOL isMultiLine;
+
+/**
+ * Whether or not this Log instance is a policy-file-request or not.
+ */
 @property(readonly, nonatomic) BOOL isPolicyFileRequest;
 
 @end

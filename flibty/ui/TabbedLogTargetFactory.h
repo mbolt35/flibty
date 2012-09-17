@@ -18,10 +18,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import <PSMTabBarControl/PSMTabBarControl.h>
 #import "LogTargetFactory.h"
 #import "LogContainer.h"
 
-@interface TabbedLogTargetFactory : NSObject<LogTargetFactory> {
+@interface TabbedLogTargetFactory : NSObject<LogTargetFactory, PSMTabBarControlDelegate> {
     LogContainer* logContainer;
     NSTabView* tabView;
     NSMutableDictionary* tabTargets;

@@ -27,6 +27,7 @@
 
 extern const NSUInteger LOG_TAG;
 extern const NSUInteger POLICY_TAG;
+extern const NSUInteger POST_POLICY_TAG;
 extern const NSString* const POLICY_FILE;
 
 @interface FlibtyConnection : NSObject {
@@ -36,20 +37,29 @@ extern const NSString* const POLICY_FILE;
 
     id<LogTarget> logTarget;
     id<LogParser> logParser;
-    __weak id<FlibtyConnectionDelegate> delegate;
 }
 
--(id)initWith:(GCDAsyncSocket*)clientSocket andLogTarget:(id<LogTarget>)logTarget parsedWith:(id<LogParser>)parser;
+/**
+ * Initializes the FlibtyConnection with a client socket and log parser.
+ */
+-(id)initWithSocket:(GCDAsyncSocket*)clientSocket parsedWith:(id<LogParser>)parser;
+
+/**
+ * Initializes the FlibtyConnection with a delegate, client socket, and log parser.
+ */
+-(id)initWithDelegate:(id<FlibtyConnectionDelegate>)delegate
+               socket:(GCDAsyncSocket*)clientSocket
+           parsedWith:(id<LogParser>)parser;
+
+/**
+ * Disconnects the FlibtyConnection.
+ */
 -(void)disconnect;
 
 @property(readonly, nonatomic) NSString* key;
 @property(readonly, nonatomic) GCDAsyncSocket* socket;
 @property(weak) id<FlibtyConnectionDelegate> delegate;
-@property(readonly, nonatomic) id<LogTarget> logTarget;
+@property(readwrite, nonatomic) id<LogTarget> logTarget;
 @property(readonly, nonatomic) id<LogParser> logParser;
 
-@end
-
-@interface FlibtyConnection(private)
--(void)parseAndLog:(NSData*)data;
 @end

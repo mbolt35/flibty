@@ -21,14 +21,19 @@
 #import "LogTarget.h"
 #import "LogContainer.h"
 
+@protocol LogTargetDelegate;
 
 @interface TabbedLogTarget : NSViewController<LogTarget> {
     LogContainer* logContainer;
+    NSString* name;
 }
 
--(id)initWith:(LogContainer*)container;
+-(id)initWith:(LogContainer*)container andName:(NSString*)targetName;
+
 -(void)log:(Log*)log;
+
 -(void)close;
 
+@property(weak) id<LogTargetDelegate> delegate;
 
 @end

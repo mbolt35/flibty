@@ -17,14 +17,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-@protocol LogTarget;
+#import "LogTarget.h"
 
+
+/**
+ * The LogTargetFactory protocol is capable of creating new LogTarget implementations.
+ */
 @protocol LogTargetFactory <NSObject>
 
-@required
+/**
+ * Creates a new LogTarget implementation with the supplied name. The NSString name should
+ * be passed along to the LogTarget such that it returns the identifier on the name property.
+ */
 -(id<LogTarget>)newLogTarget:(NSString*)withName;
--(void)close:(NSString*)logName;
-
-@optional
 
 @end

@@ -24,10 +24,12 @@
 @implementation TabbedLogTarget
 
 
--(id)initWith:(LogContainer*)container {
+-(id)initWith:(LogContainer*)container andName:(NSString*)targetName {
     self = [super initWithNibName:@"TabbedLogView" bundle:[NSBundle mainBundle]];
     if (self) {
         logContainer = container;
+        name = targetName;
+        
         self.view.autoresizesSubviews = YES;
         [self.view addSubview:logContainer.view];
         
@@ -44,6 +46,10 @@
 
 -(void)log:(Log*)log {
     [logContainer addLog:log];
+}
+
+-(NSString*)name {
+    return name;
 }
 
 -(void)close {

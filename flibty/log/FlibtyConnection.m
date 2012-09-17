@@ -27,36 +27,46 @@
 
 const NSUInteger LOG_TAG = 1;
 const NSUInteger POLICY_TAG = 10;
+const NSUInteger POST_POLICY_TAG = 11;
 
 const NSString* const POLICY_FILE = @""
-        "<?xml version=\"1.0\"?>\n"
-        "<!DOCTYPE cross-domain-policy SYSTEM \"http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd\">\n"
-        "<cross-domain-policy>\n"
-        "    <allow-access-from domain=\"*\" to-ports=\"*\" />\n"
-        "</cross-domain-policy>\x00";
+"<?xml version=\"1.0\"?>\n"
+"<cross-domain-policy>\n"
+"    <allow-access-from domain=\"*\" to-ports=\"*\" />\n"
+"</cross-domain-policy>\x00";
 
 
-@implementation FlibtyConnection
+@implementation FlibtyConnection {
+    BOOL isReady;
+}
 
 @synthesize key;
 @synthesize socket;
-@synthesize delegate;
 @synthesize logTarget;
 @synthesize logParser;
 
--(id)initWith:(GCDAsyncSocket*)clientSocket andLogTarget:(id<LogTarget>)target parsedWith:(id<LogParser>)parser {
-    if ((self = [super init])) {
+-(id)initWithSocket:(GCDAsyncSocket*)clientSocket parsedWith:(id<LogParser>)parser {
+    return [self initWithDelegate:nil socket:clientSocket parsedWith:parser];
+}
+
+-(id)initWithDelegate:(id<FlibtyConnectionDelegate>)delegate socket:(GCDAsyncSocket*)clientSocket parsedWith:(id<LogParser>)parser {
+    self = [super init];
+    
+    if (self) {
+        self.delegate = delegate;
+        
         key = [FlibtyHelper keyFor:clientSocket];
         socket = clientSocket;
         socket.delegate = self;
-        logTarget = target;
         logParser = parser;
+        isReady = NO;
         policyData = [POLICY_FILE dataUsingEncoding:NSUTF8StringEncoding];
-
-        [socket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:0];
+        
+        [socket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:LOG_TAG];
     }
-
+    
     return self;
+
 }
 
 -(void)disconnect {
@@ -65,32 +75,49 @@ const NSString* const POLICY_FILE = @""
 
 -(void)socket:(GCDAsyncSocket*)sock didWriteDataWithTag:(long)tag {
     if (tag == POLICY_TAG) {
-        if (delegate && [delegate respondsToSelector:@selector(policyFileSent:)]) {
-            [delegate policyFileSent:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(policyFileSent:)]) {
+            [self.delegate policyFileSent:self];
         }
-
-        [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:LOG_TAG];
+        
+        [sock readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:POST_POLICY_TAG];
     }
 }
 
 -(void)socket:(GCDAsyncSocket*)sock didReadData:(NSData*)data withTag:(long)tag {
+    if (tag == POST_POLICY_TAG) {
+        NSLog(@"WARNING: Post-Policy TAG was found!");
+        return;
+    }
+
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             [logParser parse:data andCallback:^(Log* log) {
-                @autoreleasepool {
-                    if (log) {
-                        if (log.isPolicyFileRequest) {
-                            NSLog(@"Is Policy File Request... Sending Data");
-                            [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
-                        } else {
-                            [logTarget log:log];
-                            [socket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:LOG_TAG];
-                        }
-                    } else {
-                        NSLog(@"Error parsing socket data into log.");
-                    }
+                // Error - bad parsing
+                if (!log) {
+                    NSLog(@"ERROR: Could not parse socket data into log.");
+                    return;
                 }
-
+                
+                // Log was actually a policy file request, which we write back to the client
+                if (log.isPolicyFileRequest) {
+                    NSLog(@"Is Policy File Request... Sending Data");
+                    [sock writeData:policyData withTimeout:-1 tag:POLICY_TAG];
+                    return;
+                }
+                
+                // If we have not yet notified our delegate of a successful logging connection, do so.
+                if (!isReady) {
+                    if (self.delegate) {
+                        [self.delegate socketDidConnect:self];
+                    }
+                    isReady = YES;
+                }
+                
+                // Pass the Log* to the logging target
+                [logTarget log:log];
+                
+                // Queue a socket read for the next incoming log
+                [socket readDataToData:[GCDAsyncSocket ZeroData] withTimeout:-1 tag:LOG_TAG];
             }];
         }
     });
@@ -104,8 +131,8 @@ const NSString* const POLICY_FILE = @""
             }
         });
         
-        if (delegate && [delegate respondsToSelector:@selector(socketDisconnected:)]) {
-            [delegate socketDisconnected:self];
+        if (self.delegate) {
+            [self.delegate socketDisconnected:self];
         }
     }
 }
